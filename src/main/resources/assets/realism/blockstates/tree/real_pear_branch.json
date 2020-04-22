@@ -1,0 +1,25 @@
+{
+    "multipart": [
+        {   "when": { "default": "true" },
+            "apply": { "model": "realism:tree/branch_pear/default" }
+        },
+     	{   "when": { "down_br": "true" },
+            "apply": { "model": "realism:tree/branch_pear/down_branch", "uvlock": true }
+        },
+     	{   "when": { "up_br": "true"  },
+            "apply": { "model": "realism:tree/branch_pear/up_branch", "uvlock": true }
+        },
+        {   "when": { "north_br": "true" },
+            "apply": { "model": "realism:tree/branch_pear/north_branch", "uvlock": true }
+        },
+        {   "when": { "east_br": "true"  },
+            "apply": { "model": "realism:tree/branch_pear/east_branch", "uvlock": true }
+        },
+        {   "when": { "south_br": "true" },
+            "apply": { "model": "realism:tree/branch_pear/south_branch","uvlock": true }
+        },
+        {   "when": { "west_br": "true"  },
+            "apply": { "model": "realism:tree/branch_pear/west_branch", "uvlock": true }
+        }
+    ]
+}

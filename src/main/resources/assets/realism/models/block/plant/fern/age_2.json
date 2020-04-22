@@ -1,0 +1,6 @@
+{
+    "parent": "block/tinted_cross",
+    "textures": {
+        "cross": "realism:blocks/plants/fern/age_2"
+    }
+}

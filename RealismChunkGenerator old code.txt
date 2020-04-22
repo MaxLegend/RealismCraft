@@ -1,0 +1,306 @@
+public class RealismChunkGenerator extends ChunkGeneratorOverworld implements IChunkGenerator {
+	public IBlockState oceanBlock = BlocksList.SALTY_WATER.getDefaultState();
+	public MapGenBase caveGenerator = new RealMapGenCaves();
+
+	public RealismChunkGenerator(World worldIn, long seed, boolean mapFeaturesEnabledIn, String generatorOptions) {
+		super(worldIn, seed, false, generatorOptions);
+		{
+			caveGenerator = net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(caveGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE);
+
+			strongholdGenerator = (MapGenStronghold)net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(strongholdGenerator, net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.STRONGHOLD);
+
+		}
+	} 
+
+
+	@Override
+	public void populate(int x, int z)
+	{
+		//	System.out.println("fff");
+		int i = x * 16 ;
+		int j = z * 16  ;
+		
+		BlockPos  posT = new BlockPos(i , 1, j);
+		BlockPos  pos = new BlockPos(i + world.rand.nextInt(14) , world.getHeight(i,j) - 1, j + world.rand.nextInt(14) );
+		BlockPos  pos2 = new BlockPos(i + world.rand.nextInt(14) , world.getHeight(i,j) - 1 , j + world.rand.nextInt(14) );
+		BlockPos  pos3 = new BlockPos(i + world.rand.nextInt(14) , world.getHeight(i,j) - 1, j + world.rand.nextInt(14) );
+
+		//	System.out.println(pos +" "+ pos2 +" "+ pos3);
+		Biome biome = this.world.getBiome(pos.add(16, 0, 16));
+		this.rand.setSeed(this.world.getSeed());
+
+	//	for(int dob = 0; dob < 4; dob=+4) {
+	//		new WorldGenMagmaticOre(BlocksList.MAGMATIC_COPPER.getDefaultState(), ThreadLocalRandom.current().nextInt(10, 15)).generate(world, rand, posT);
+	//		new WorldGenMagmaticOre(BlocksList.MAGMATIC_CHROME.getDefaultState(), ThreadLocalRandom.current().nextInt(10, 15)).generate(world, rand,  posT);
+		//	new WorldGenMagmaticOre(BlocksList.MAGMATIC_COAL.getDefaultState(), ThreadLocalRandom.current().nextInt(10, 15)).generate(world, rand,  pos.north(dob));
+		//	new WorldGenMagmaticOre(BlocksList.MAGMATIC_TIN.getDefaultState(), ThreadLocalRandom.current().nextInt(10, 15)).generate(world, rand, pos.east(dob).east(dob));
+		//	new WorldGenMagmaticOre(BlocksList.MAGMATIC_TITAN.getDefaultState(), ThreadLocalRandom.current().nextInt(10, 15)).generate(world, rand,  pos.west(dob).north(dob));
+		//	new WorldGenMagmaticOre(BlocksList.MAGMATIC_VANADIUM.getDefaultState(), ThreadLocalRandom.current().nextInt(10, 15)).generate(world, rand,  pos.north(dob).east(dob));
+		//	new WorldGenMagmaticOre(BlocksList.MAGMATIC_NICKEL.getDefaultState(), ThreadLocalRandom.current().nextInt(10, 15)).generate(world, rand,  pos.north(dob).west(dob));
+	//	}
+
+
+
+
+		if(world.getBlockState(pos) == BlocksList.MAGMATIC_GRASS.getDefaultState() || world.getBlockState(pos2) == BlocksList.MAGMATIC_GRASS.getDefaultState()   ||world.getBlockState(pos3) == BlocksList.MAGMATIC_GRASS.getDefaultState()  ) {
+			if( biome == RegBiomes.MAGMATIC_PLAINS || biome == RegBiomes.MAGMATIC_HILLS) {
+
+				new SpruceTreeGenerator(BlocksList.REAL_SPRUCE, BlocksList.REAL_SPRUCE_BRANCH, BlocksList.REAL_SPRUCE_LEAVES).generate(world, rand, pos);
+				new PineTreeGenerator(BlocksList.REAL_PINE, BlocksList.REAL_PINE_BRANCH, BlocksList.REAL_PINE_LEAVES).generate(world, rand, pos2);
+				new FoliateTreeGenerator(BlocksList.REAL_LARCH, BlocksList.REAL_LARCH_BRANCH, BlocksList.REAL_LARCH_LEAVES).generate(world, rand, pos3);
+
+			}
+		}
+		if(world.getBlockState(pos) == BlocksList.SEDIMENTARY_GRASS.getDefaultState() || world.getBlockState(pos2) == BlocksList.SEDIMENTARY_GRASS.getDefaultState()   ||world.getBlockState(pos3) == BlocksList.SEDIMENTARY_GRASS.getDefaultState()  ) {
+
+			if( biome == RegBiomes.SEDIMENTARY_KNOLL) {
+
+				new FoliateTreeGenerator(BlocksList.REAL_PEAR, BlocksList.REAL_PEAR_BRANCH, BlocksList.REAL_PEAR_LEAVES).generate(world, rand, pos);
+				new FoliateTreeGenerator(BlocksList.REAL_POPLAR, BlocksList.REAL_POPLAR_BRANCH, BlocksList.REAL_POPLAR_LEAVES).generate(world, rand, pos2);
+				new FoliateTreeGenerator(BlocksList.REAL_ASH, BlocksList.REAL_ASH_BRANCH, BlocksList.REAL_ASH_LEAVES).generate(world, rand, pos3);
+
+			}
+		}
+		if(world.getBlockState(pos) == BlocksList.METAMORPHIC_GRASS.getDefaultState() || world.getBlockState(pos2) == BlocksList.METAMORPHIC_GRASS.getDefaultState()   ||world.getBlockState(pos3) == BlocksList.METAMORPHIC_GRASS.getDefaultState()  ) {
+
+			if( biome == RegBiomes.METAMORPHIC_HILLS) {
+
+				new FoliateTreeGenerator(BlocksList.REAL_OAK, BlocksList.REAL_OAK_BRANCH, BlocksList.REAL_OAK_LEAVES).generate(world, rand, pos);
+				new FoliateTreeGenerator(BlocksList.REAL_BIRCH, BlocksList.REAL_BIRCH_BRANCH, BlocksList.REAL_BIRCH_LEAVES).generate(world, rand, pos2);
+				new FoliateTreeGenerator(BlocksList.REAL_LINDEN, BlocksList.REAL_LINDEN_BRANCH, BlocksList.REAL_LINDEN_LEAVES).generate(world, rand, pos3);
+			}
+		}
+	}
+	@Override
+	public boolean generateStructures(Chunk chunkIn, int x, int z)
+	{
+		return false;
+	}
+	@Override
+	public boolean isInsideStructure(World worldIn, String structureName, BlockPos pos)
+	{
+		return false;
+	}
+	@Override
+	public void recreateStructures(Chunk chunkIn, int x, int z)
+	{
+
+	}
+	@Override
+	public void setBlocksInChunk(int x, int z, ChunkPrimer primer)
+	{
+		this.biomesForGeneration = this.world.getBiomeProvider().getBiomesForGeneration(this.biomesForGeneration, x * 4 - 2, z * 4 - 2, 10, 10);
+		this.generateHeightmap(x * 4, 0, z * 4);
+
+		for (int i = 0; i < 4; ++i)
+		{
+			int j = i * 5;
+			int k = (i + 1) * 5;
+
+			for (int l = 0; l < 4; ++l)
+			{
+				int i1 = (j + l) * 33;
+				int j1 = (j + l + 1) * 33;
+				int k1 = (k + l) * 33;
+				int l1 = (k + l + 1) * 33;
+
+				for (int i2 = 0; i2 < 32; ++i2)
+				{
+					double d0 = 0.125D;
+					double d1 = this.heightMap[i1 + i2];
+					double d2 = this.heightMap[j1 + i2];
+					double d3 = this.heightMap[k1 + i2];
+					double d4 = this.heightMap[l1 + i2];
+					double d5 = (this.heightMap[i1 + i2 + 1] - d1) * 0.125D;
+					double d6 = (this.heightMap[j1 + i2 + 1] - d2) * 0.125D;
+					double d7 = (this.heightMap[k1 + i2 + 1] - d3) * 0.125D;
+					double d8 = (this.heightMap[l1 + i2 + 1] - d4) * 0.125D;
+
+					for (int j2 = 0; j2 < 8; ++j2)
+					{
+						double d9 = 0.25D;
+						double d10 = d1;
+						double d11 = d2;
+						double d12 = (d3 - d1) * 0.25D;
+						double d13 = (d4 - d2) * 0.25D;
+
+						for (int k2 = 0; k2 < 4; ++k2)
+						{
+							double d14 = 0.25D;
+							double d16 = (d11 - d10) * 0.25D;
+							double lvt_45_1_ = d10 - d16;
+
+							for (int l2 = 0; l2 < 4; ++l2)
+							{
+								if ((lvt_45_1_ += d16) > 0.0D)
+								{
+									primer.setBlockState(i * 4 + k2, i2 * 8 + j2, l * 4 + l2, STONE);
+								}
+								else if (i2 * 8 + j2 < this.settings.seaLevel)
+								{
+									primer.setBlockState(i * 4 + k2, i2 * 8 + j2, l * 4 + l2, this.oceanBlock);
+								}
+							}
+
+							d10 += d12;
+							d11 += d13;
+						}
+
+						d1 += d5;
+						d2 += d6;
+						d3 += d7;
+						d4 += d8;
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+	@Override
+	public Chunk generateChunk(int x, int z)
+	{
+		this.rand.setSeed((long)x * 341873128712L + (long)z * 132897987541L);
+		ChunkPrimer chunkprimer = new ChunkPrimer();
+		this.setBlocksInChunk(x, z, chunkprimer);
+		this.biomesForGeneration = this.world.getBiomeProvider().getBiomes(this.biomesForGeneration, x * 16, z * 16, 16, 16);
+		this.replaceBiomeBlocks(x, z, chunkprimer, this.biomesForGeneration);
+
+		if (this.settings.useCaves)
+		{
+			this.caveGenerator.generate(this.world, x, z, chunkprimer);
+		}
+
+
+		Chunk chunk = new Chunk(this.world, chunkprimer, x, z);
+		byte[] abyte = chunk.getBiomeArray();
+
+		for (int i = 0; i < abyte.length; ++i)
+		{
+			abyte[i] = (byte)Biome.getIdForBiome(this.biomesForGeneration[i]);
+		}
+
+		chunk.generateSkylightMap();
+		return chunk;
+	}
+	@Override
+	public void generateHeightmap(int p_185978_1_, int p_185978_2_, int p_185978_3_)
+	{
+		this.depthRegion = this.depthNoise.generateNoiseOctaves(this.depthRegion, p_185978_1_, p_185978_3_, 5, 5, (double)this.settings.depthNoiseScaleX, (double)this.settings.depthNoiseScaleZ, (double)this.settings.depthNoiseScaleExponent);
+		float f = this.settings.coordinateScale;
+		float f1 = this.settings.heightScale;
+		this.mainNoiseRegion = this.mainPerlinNoise.generateNoiseOctaves(this.mainNoiseRegion, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5, (double)(f / this.settings.mainNoiseScaleX), (double)(f1 / this.settings.mainNoiseScaleY), (double)(f / this.settings.mainNoiseScaleZ));
+		this.minLimitRegion = this.minLimitPerlinNoise.generateNoiseOctaves(this.minLimitRegion, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5, (double)f, (double)f1, (double)f);
+		this.maxLimitRegion = this.maxLimitPerlinNoise.generateNoiseOctaves(this.maxLimitRegion, p_185978_1_, p_185978_2_, p_185978_3_, 5, 33, 5, (double)f, (double)f1, (double)f);
+		int i = 0;
+		int j = 0;
+
+		for (int k = 0; k < 5; ++k)
+		{
+			for (int l = 0; l < 5; ++l)
+			{
+				float f2 = 0.0F;
+				float f3 = 0.0F;
+				float f4 = 0.0F;
+				int i1 = 2;
+				Biome biome = this.biomesForGeneration[k + 2 + (l + 2) * 10];
+
+				for (int j1 = -2; j1 <= 2; ++j1)
+				{
+					for (int k1 = -2; k1 <= 2; ++k1)
+					{
+						Biome biome1 = this.biomesForGeneration[k + j1 + 2 + (l + k1 + 2) * 10];
+						float f5 = this.settings.biomeDepthOffSet + biome1.getBaseHeight() * this.settings.biomeDepthWeight;
+						float f6 = this.settings.biomeScaleOffset + biome1.getHeightVariation() * this.settings.biomeScaleWeight;
+
+						if (this.terrainType == WorldType.AMPLIFIED && f5 > 0.0F)
+						{
+							f5 = 1.0F + f5 * 2.0F;
+							f6 = 1.0F + f6 * 4.0F;
+						}
+
+						float f7 = this.biomeWeights[j1 + 2 + (k1 + 2) * 5] / (f5 + 2.0F);
+
+						if (biome1.getBaseHeight() > biome.getBaseHeight())
+						{
+							f7 /= 2.0F;
+						}
+
+						f2 += f6 * f7;
+						f3 += f5 * f7;
+						f4 += f7;
+					}
+				}
+
+				f2 = f2 / f4;
+				f3 = f3 / f4;
+				f2 = f2 * 0.9F + 0.1F;
+				f3 = (f3 * 4.0F - 1.0F) / 8.0F;
+				double d7 = this.depthRegion[j] / 8000.0D;
+
+				if (d7 < 0.0D)
+				{
+					d7 = -d7 * 0.3D;
+				}
+
+				d7 = d7 * 3.0D - 2.0D;
+
+				if (d7 < 0.0D)
+				{
+					d7 = d7 / 2.0D;
+
+					if (d7 < -1.0D)
+					{
+						d7 = -1.0D;
+					}
+
+					d7 = d7 / 1.4D;
+					d7 = d7 / 2.0D;
+				}
+				else
+				{
+					if (d7 > 1.0D)
+					{
+						d7 = 1.0D;
+					}
+
+					d7 = d7 / 8.0D;
+				}
+
+				++j;
+				double d8 = (double)f3;
+				double d9 = (double)f2;
+				d8 = d8 + d7 * 0.2D;
+				d8 = d8 * (double)this.settings.baseSize / 8.0D;
+				double d0 = (double)this.settings.baseSize + d8 * 4.0D;
+
+				for (int l1 = 0; l1 < 33; ++l1)
+				{
+					double d1 = ((double)l1 - d0) * (double)this.settings.stretchY * 128.0D / 402.0D / d9;
+
+					if (d1 < 0.0D)
+					{
+						d1 *= 4.0D;
+					}
+
+					double d2 = this.minLimitRegion[i] / (double)this.settings.lowerLimitScale;
+					double d3 = this.maxLimitRegion[i] / (double)this.settings.upperLimitScale;
+					double d4 = (this.mainNoiseRegion[i] / 10.0D + 1.0D) / 2.0D;
+					double d5 = MathHelper.clampedLerp(d2, d3, d4) - d1;
+
+					if (l1 > 29)
+					{
+						double d6 = (double)((float)(l1 - 29) / 3.0F);
+						d5 = d5 * (1.0D - d6) + -10.0D * d6;
+					}
+
+					this.heightMap[i] = d5;
+					++i;
+				}
+			}
+		}
+	}
+
+}

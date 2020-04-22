@@ -1,0 +1,26 @@
+{
+    "multipart": [
+        {   "when": { "default": "true" },
+            "apply": { "model": "realism:tree/branch_larch/default" }
+        },
+     
+     	{   "when": { "down_br": "true" },
+            "apply": { "model": "realism:tree/branch_larch/down_branch", "uvlock": true }
+        },
+     	{   "when": { "up_br": "true"  },
+            "apply": { "model": "realism:tree/branch_larch/up_branch", "uvlock": true }
+        },
+        {   "when": { "north_br": "true" },
+            "apply": { "model": "realism:tree/branch_larch/north_branch", "uvlock": true }
+        },
+        {   "when": { "east_br": "true"  },
+            "apply": { "model": "realism:tree/branch_larch/east_branch", "uvlock": true }
+        },
+        {   "when": { "south_br": "true" },
+            "apply": { "model": "realism:tree/branch_larch/south_branch","uvlock": true }
+        },
+        {   "when": { "west_br": "true"  },
+            "apply": { "model": "realism:tree/branch_larch/west_branch", "uvlock": true }
+        }
+    ]
+}

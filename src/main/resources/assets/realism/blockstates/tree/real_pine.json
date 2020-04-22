@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "axis=y":  { "model": "realism:tree/real_pine" },
+        "axis=z":   { "model": "realism:tree/real_pine", "x": 90 },
+        "axis=x":   { "model": "realism:tree/real_pine", "x": 90, "y": 90 },
+        "axis=none": { "model": "realism:tree/real_pine" }
+      
+    }
+}

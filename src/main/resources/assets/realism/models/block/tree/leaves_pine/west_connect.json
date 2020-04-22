@@ -1,0 +1,27 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "realism:blocks/tree/real_pine_side",
+		"particle": "realism:blocks/leaves/real_pine_lv"
+	},
+	"elements": [
+		{
+			"from": [0, 7, 7],
+			"to": [7, 9, 9],
+			"faces": {
+				"north": {"uv": [0, 0, 7, 2], "texture": "#1"},
+				"east": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"south": {"uv": [0, 0, 7, 2], "texture": "#1"},
+				"west": {"uv": [0, 0, 2, 2], "texture": "#1"},
+				"up": {"uv": [0, 0, 7, 2], "texture": "#1"},
+				"down": {"uv": [0, 0, 7, 2], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "down_connect_stage_1",
+			"origin": [8, 8, 8],
+			"children": []
+		}, 0]
+}

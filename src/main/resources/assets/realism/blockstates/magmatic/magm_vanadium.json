@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "normal": { "model": "realism:magmatic/magm_vanadium" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "grass_state=default":  { "model": "realism:metamorphic/grass/default" },
+        "grass_state=snowy":   { "model": "realism:metamorphic/grass/snowy"},
+        "grass_state=dry":   { "model": "realism:metamorphic/grass/dry"},
+        "grass_state=scorch": { "model": "realism:metamorphic/grass/scorch" }
+    }
+}

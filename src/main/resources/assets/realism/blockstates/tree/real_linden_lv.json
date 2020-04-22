@@ -1,0 +1,25 @@
+{
+    "multipart": [
+        {   "when": { "default": "true"},
+            "apply": { "model": "realism:tree/leaves_linden/default" }
+        },
+     	{   "when": { "down": "true" },
+            "apply": { "model": "realism:tree/leaves_linden/down_connect", "uvlock": true }
+        },
+     	{   "when": { "up": "true"  },
+            "apply": { "model": "realism:tree/leaves_linden/up_connect", "uvlock": true }
+        },
+        {   "when": { "north": "true" },
+            "apply": { "model": "realism:tree/leaves_linden/north_connect", "uvlock": true }
+        },
+        {   "when": { "east": "true"  },
+            "apply": { "model": "realism:tree/leaves_linden/east_connect", "uvlock": true }
+        },
+        {   "when": { "south": "true" },
+            "apply": { "model": "realism:tree/leaves_linden/south_connect","uvlock": true }
+        },
+        {   "when": { "west": "true"  },
+            "apply": { "model": "realism:tree/leaves_linden/west_connect", "uvlock": true }
+        }
+    ]
+}

@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "realism:blocks/tree/real_spruce_side",
-		"particle": "realism:blocks/tree/real_spruce_side"
+		"0": "realism:blocks/tree/spruce/spruce_side",
+		"particle": "realism:blocks/tree/spruce/spruce_side"
 	},
 	"elements": [
 		{

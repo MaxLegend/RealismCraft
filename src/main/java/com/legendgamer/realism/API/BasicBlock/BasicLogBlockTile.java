@@ -21,12 +21,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.EnumFacing.Axis;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -34,7 +36,33 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BasicLogBlockTile extends BlockTileEntity {
-
+	protected static final AxisAlignedBB[] AABB_STAGER = new AxisAlignedBB[] {
+			new AxisAlignedBB(0.377D, 0.0D, 0.377D, 0.623D, 1D, 0.623D),
+			new AxisAlignedBB(0.315D, 0.0D, 0.315D, 0.685D, 1D, 0.685D),
+			new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1D, 0.75D),
+			new AxisAlignedBB(0.19D, 0.0D, 0.19D, 0.81D, 1D, 0.81D),
+			new AxisAlignedBB(0.127D, 0.0D, 0.127D, 0.873D, 1D, 0.873D),
+			new AxisAlignedBB(0.065D, 0.0D, 0.065D, 0.935D, 1D, 0.935D),
+			new AxisAlignedBB(0D, 0.0D, 0D, 1D, 1D, 1D),
+	};
+	protected static final AxisAlignedBB[] AABB_STAGER_X = new AxisAlignedBB[] {
+			new AxisAlignedBB(0D, 0.377D, 0.377D, 1D, 0.623D, 0.623D),
+			new AxisAlignedBB(0D, 0.315D, 0.315D, 1D, 0.685D, 0.685D),
+			new AxisAlignedBB(0D, 0.25D, 0.25D, 1D, 0.75D, 0.75D),
+			new AxisAlignedBB(0D, 0.19D, 0.19D, 1D, 0.81D, 0.81D),
+			new AxisAlignedBB(0D, 0.127D, 0.127D, 1D, 0.873D, 0.873D),
+			new AxisAlignedBB(0D, 0.065D, 0.065D, 1D, 0.935D, 0.935D),
+			new AxisAlignedBB(0D, 0.0D, 0D, 1D, 1D, 1D),
+	};
+	protected static final AxisAlignedBB[] AABB_STAGER_Z = new AxisAlignedBB[] {
+			new AxisAlignedBB(0.377D, 0.377D, 0D, 0.623D,  0.623D, 1D),
+			new AxisAlignedBB(0.315D, 0.315D, 0D, 0.685D, 0.685D, 1D),
+			new AxisAlignedBB(0.25D, 0.25D, 0D, 0.75D, 0.75D, 1D),
+			new AxisAlignedBB(0.19D, 0.19D, 0D, 0.81D, 0.81D, 1D),
+			new AxisAlignedBB(0.127D, 0.127D, 0D, 0.873D, 0.873D, 1D),
+			new AxisAlignedBB(0.065D, 0.065D, 0D, 0.935D, 0.935D, 1D),
+			new AxisAlignedBB(0D, 0.0D, 0D, 1D, 1D, 1D),
+	};
 	public static final PropertyEnum<EnumAxis> AXIS = PropertyEnum.<EnumAxis>create("axis", EnumAxis.class);
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 6);
 	public Block branch;
@@ -49,7 +77,50 @@ public class BasicLogBlockTile extends BlockTileEntity {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumAxis.Y).withProperty(STAGE, 0));
 
 	}
-
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+	{
+		if(state.getValue(AXIS) == EnumAxis.Y) {
+			switch(state.getValue(STAGE)) {
+			case 0:	return AABB_STAGER[0];
+			case 1:	return AABB_STAGER[1];
+			case 2:	return AABB_STAGER[2];
+			case 3:	return AABB_STAGER[3];
+			case 4:	return AABB_STAGER[4];
+			case 5:	return AABB_STAGER[5];
+			case 6:	return AABB_STAGER[6];
+			}
+		}
+		if(state.getValue(AXIS) == EnumAxis.X) {
+			switch(state.getValue(STAGE)) {
+			case 0:	return AABB_STAGER_X[0];
+			case 1:	return AABB_STAGER_X[1];
+			case 2:	return AABB_STAGER_X[2];
+			case 3:	return AABB_STAGER_X[3];
+			case 4:	return AABB_STAGER_X[4];
+			case 5:	return AABB_STAGER_X[5];
+			case 6:	return AABB_STAGER_X[6];
+			}
+		}
+		if(state.getValue(AXIS) == EnumAxis.Z) {
+			switch(state.getValue(STAGE)) {
+			case 0:	return AABB_STAGER_Z[0];
+			case 1:	return AABB_STAGER_Z[1];
+			case 2:	return AABB_STAGER_Z[2];
+			case 3:	return AABB_STAGER_Z[3];
+			case 4:	return AABB_STAGER_Z[4];
+			case 5:	return AABB_STAGER_Z[5];
+			case 6:	return AABB_STAGER_Z[6];
+			}
+		}
+		return new AxisAlignedBB(0D, 0.0D, 0D, 1D, 1D, 1D);
+	}
+		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+		{
+			RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
+			int stage = state.getValue(STAGE);
+			if(stage < 6) world.setBlockState(pos, state.withProperty(STAGE, stage+1));
+			return true;
+		}
 	public static enum EnumAxis implements IStringSerializable {
 		X("x"),
 		Y("y"),
@@ -105,69 +176,40 @@ public class BasicLogBlockTile extends BlockTileEntity {
 		}
 		return false;
 	} 	
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-	{
-		if(!world.isRemote) {
-			//			RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-			//			world.scheduleUpdate(pos, this, 20);
-			//			//te.saveStage(state.getValue(STAGE));;
-			//
-			//			te.stage = state.getValue(STAGE);
-			//
-			//			if(te.stage <= 6) {
-			//				te.stage++;
-			//				world.setBlockState(pos, state.withProperty(STAGE, te.stage));
-			//				System.out.println(" te.stage2 " +  te.stage);
-			//				 
-			//				te.saveStage(te.stage);
-			//			}
 
-			return true;
-		}
-		return true;
-	}
 
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-
 		world.scheduleUpdate(pos, this, this.tickRate(world));
 	}
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
-
 //		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-//		if(te.stage > 0) {
-//			return state.withProperty(STAGE, te.stage);
-//		
+//		if(te.stage == 6) {
+//			state.withProperty(STAGE, 6);
+//		} 
 		return state;
 	}
 
+	public void growBlock(World world, BlockPos pos, IBlockState state) {
+		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
+		world.scheduleUpdate(pos, this, 60);
+		if(te.stage == 6) {
+			world.setBlockState(pos, state.withProperty(STAGE, 6));
+		} else 
+			if(te.stage < 6) {
+				int stage = te.stage;
+				world.removeTileEntity(pos);
+				world.setBlockState(pos, state.withProperty(STAGE, stage+1));
+				RealTreeTileEntity tile = (RealTreeTileEntity)world.getTileEntity(pos);
+				tile.stage = stage + 1;
+			}
+	}
 
-	@Override
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
 	{
-
-//		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-//		world.scheduleUpdate(pos, this, 60);
-//		if(te.stage > 0) {
-//		//	System.out.println("te.stage " + te.stage);
-//		//	world.setBlockState(pos, state.withProperty(STAGE, te.stage));
-//			if(te.stage < 6) {
-//				world.setBlockState(pos, state.withProperty(STAGE, te.stage+1));
-//				System.out.println("te.stage2 " + te.stage);
-//				te.saveStage(te.stage+1);
-//			
-//			}
-//		}
-////		} else {
-////			System.out.println("else te.stage " + te.stage);
-//			te.stage = state.getValue(STAGE);
-//			System.out.println("else te.stagepost " + te.stage);
-//		}
-		//	stage = te.getStage();
-	
-
-
+		//this.growBlock(world, pos, state);
+		
 	}
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis)

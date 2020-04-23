@@ -15,6 +15,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -23,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockRealTrees extends BasicLogBlock {
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 6);
-	
+
 	Block branch;
 	public BlockRealTrees(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype,
 			CreativeTabs tab, Block branch) {

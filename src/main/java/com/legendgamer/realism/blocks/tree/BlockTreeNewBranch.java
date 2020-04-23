@@ -1,13 +1,13 @@
 package com.legendgamer.realism.blocks.tree;
 
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
+import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -113,7 +113,7 @@ public class BlockTreeNewBranch extends BasicBlock{
 	private boolean canConnectToBranch(IBlockAccess world, BlockPos pos, EnumFacing facing)
 	{
 		Block connector_branch = world.getBlockState(pos.offset(facing)).getBlock();
-		if(connector_branch instanceof BlockRealTrees || connector_branch instanceof BlockTreeNewBranch ||  connector_branch instanceof BlockRealLeaves) {
+		if(connector_branch instanceof BasicLogBlockTile || connector_branch instanceof BlockTreeNewBranch ||  connector_branch instanceof BlockRealLeaves) {
 			return true;
 		} else return false;
 	}

@@ -1,0 +1,23 @@
+{
+	"parent": "block/cube_all",
+	"credit": "Made special for SovietLab",
+	"textures": {
+		"0": "realism:blocks/tree/poplar/poplar_side",
+		"1": "realism:blocks/tree/poplar/poplar_top_3",
+		"particle": "realism:blocks/tree/poplar/poplar_side"
+	},
+	"elements": [
+		{
+			"from": [3, 0, 3],
+			"to": [13, 16, 13],
+			"faces": {
+				"north": {"uv": [0, 0, 10, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 10, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 10, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 10, 16], "texture": "#0"},
+				"up": {"uv": [3, 3, 13, 13], "texture": "#1"},
+				"down": {"uv": [3, 3, 13, 13], "texture": "#1"}
+			}
+		}
+	]
+}

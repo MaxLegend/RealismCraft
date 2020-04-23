@@ -2,8 +2,8 @@
 	"parent": "block/cube_all",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "realism:blocks/tree/real_linden_side",
-		"particle": "realism:blocks/tree/real_linden_side"
+		"0": "realism:blocks/tree/linden/linden_side",
+		"particle": "realism:blocks/tree/linden/linden_side"
 	},
 	"elements": [
 		{

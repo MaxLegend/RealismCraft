@@ -2,8 +2,8 @@
 	"parent": "block/cube_all",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "realism:blocks/tree/real_poplar_side",
-		"particle": "realism:blocks/tree/real_poplar_side"
+		"0": "realism:blocks/tree/poplar/poplar_side",
+		"particle": "realism:blocks/tree/poplar/poplar_side"
 	},
 	"elements": [
 		{

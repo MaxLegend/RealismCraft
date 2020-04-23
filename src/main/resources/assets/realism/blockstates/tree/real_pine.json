@@ -1,9 +1,25 @@
 {
     "variants": {
-        "axis=y":  { "model": "realism:tree/real_pine" },
-        "axis=z":   { "model": "realism:tree/real_pine", "x": 90 },
-        "axis=x":   { "model": "realism:tree/real_pine", "x": 90, "y": 90 },
-        "axis=none": { "model": "realism:tree/real_pine" }
-      
+        "axis=y,stage=0":  { "model": "realism:tree/pine/stage_0" },
+        "axis=z,stage=0":   { "model": "realism:tree/pine/stage_0", "x": 90 },
+        "axis=x,stage=0":   { "model": "realism:tree/pine/stage_0", "x": 90, "y": 90 },
+      	"axis=y,stage=1":  { "model": "realism:tree/pine/stage_1" },
+        "axis=z,stage=1":   { "model": "realism:tree/pine/stage_1", "x": 90 },
+        "axis=x,stage=1":   { "model": "realism:tree/pine/stage_1", "x": 90, "y": 90 },
+      	"axis=y,stage=2":  { "model": "realism:tree/pine/stage_2" },
+        "axis=z,stage=2":   { "model": "realism:tree/pine/stage_2", "x": 90 },
+        "axis=x,stage=2":   { "model": "realism:tree/pine/stage_2", "x": 90, "y": 90 },
+      	"axis=y,stage=3":  { "model": "realism:tree/pine/stage_3" },
+        "axis=z,stage=3":   { "model": "realism:tree/pine/stage_3", "x": 90 },
+        "axis=x,stage=3":   { "model": "realism:tree/pine/stage_3", "x": 90, "y": 90 },
+      	"axis=y,stage=4":  { "model": "realism:tree/pine/stage_4" },
+        "axis=z,stage=4":   { "model": "realism:tree/pine/stage_4", "x": 90 },
+        "axis=x,stage=4":   { "model": "realism:tree/pine/stage_4", "x": 90, "y": 90 },
+      	"axis=y,stage=5":  { "model": "realism:tree/pine/stage_5" },
+        "axis=z,stage=5":   { "model": "realism:tree/pine/stage_5", "x": 90 },
+        "axis=x,stage=5":   { "model": "realism:tree/pine/stage_5", "x": 90, "y": 90 },
+      	"axis=y,stage=6":  { "model": "realism:tree/pine/stage_6" },
+        "axis=z,stage=6":   { "model": "realism:tree/pine/stage_6", "x": 90 },
+        "axis=x,stage=6":   { "model": "realism:tree/pine/stage_6", "x": 90, "y": 90 }
     }
 }

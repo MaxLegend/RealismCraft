@@ -2,12 +2,11 @@ package com.legendgamer.realism.API.BasicBlock;
 
 import java.util.Random;
 
-import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile.EnumAxis;
 import com.legendgamer.realism.blocks.tree.RealTreeTileEntity;
 import com.legendgamer.realism.reg.BlocksList;
 
+import io.netty.util.internal.ThreadLocalRandom;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -20,14 +19,12 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTUtil;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.Rotation;
-import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -66,6 +63,7 @@ public class BasicLogBlockTile extends BlockTileEntity {
 	public static final PropertyEnum<EnumAxis> AXIS = PropertyEnum.<EnumAxis>create("axis", EnumAxis.class);
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 6);
 	public Block branch;
+	//	public Block leaves;
 	public BasicLogBlockTile(final Material materialIn, final String name, float hardness,float resistanse, SoundType soundtype,CreativeTabs cTab, Block branch) {
 		super(name, materialIn, resistanse, resistanse, soundtype, cTab);
 		this.setSoundType(soundtype);
@@ -74,6 +72,7 @@ public class BasicLogBlockTile extends BlockTileEntity {
 		this.setCreativeTab(cTab);
 		this.setTickRandomly(true);
 		this.branch = branch;
+		//	this.leaves = leaves;
 		this.setDefaultState(this.blockState.getBaseState().withProperty(AXIS, EnumAxis.Y).withProperty(STAGE, 0));
 
 	}
@@ -114,13 +113,13 @@ public class BasicLogBlockTile extends BlockTileEntity {
 		}
 		return new AxisAlignedBB(0D, 0.0D, 0D, 1D, 1D, 1D);
 	}
-		public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-		{
-			RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-			int stage = state.getValue(STAGE);
-			if(stage < 6) world.setBlockState(pos, state.withProperty(STAGE, stage+1));
-			return true;
-		}
+	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+	{
+		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
+		int stage = state.getValue(STAGE);
+		if(stage < 6) world.setBlockState(pos, state.withProperty(STAGE, stage+1));
+		return true;
+	}
 	public static enum EnumAxis implements IStringSerializable {
 		X("x"),
 		Y("y"),
@@ -184,18 +183,25 @@ public class BasicLogBlockTile extends BlockTileEntity {
 	}
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
-//		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-//		if(te.stage == 6) {
-//			state.withProperty(STAGE, 6);
-//		} 
+
+
+		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
+		if(te.stage > 0) {
+			return state.withProperty(STAGE, te.stage);
+		}
 		return state;
 	}
 
 	public void growBlock(World world, BlockPos pos, IBlockState state) {
+
 		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-		world.scheduleUpdate(pos, this, 60);
-		if(te.stage == 6) {
+		if(te.stage >= 6) {
+
+			int stage = te.stage;
+			world.removeTileEntity(pos);
 			world.setBlockState(pos, state.withProperty(STAGE, 6));
+			RealTreeTileEntity tile = (RealTreeTileEntity)world.getTileEntity(pos);
+			tile.stage = 6;
 		} else 
 			if(te.stage < 6) {
 				int stage = te.stage;
@@ -204,12 +210,33 @@ public class BasicLogBlockTile extends BlockTileEntity {
 				RealTreeTileEntity tile = (RealTreeTileEntity)world.getTileEntity(pos);
 				tile.stage = stage + 1;
 			}
+
 	}
 
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
 	{
-		//this.growBlock(world, pos, state);
-		
+		if(!world.isRemote) {
+			RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
+			world.scheduleUpdate(pos, this, 60);
+			//				int maxHeightTree = 0;
+			//				if(world.getBlockState(pos.down()) != this && state.getValue(STAGE) == 0) {
+			//					maxHeightTree = ThreadLocalRandom.current().nextInt(5,8);
+			//				//	System.out.println("maxHeightTree "+ te.stage );
+			//				}
+			//		
+			//				if(world.isAirBlock(pos.up()) && state.getValue(AXIS) == EnumAxis.Y ) {
+			//					if(world.getBlockState(pos.down(maxHeightTree)).getBlock() != this) {
+			//						world.setBlockState(pos.up(), state);
+			//					}
+			//					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+			//						if(world.isAirBlock(pos.offset(f))) {
+			//							world.setBlockState(pos.offset(f), BlocksList.REAL_BIRCH_LEAVES.getDefaultState());
+			//						}
+			//					}
+		}
+
+		this.growBlock(world, pos, state);
+		//	}
 	}
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis)

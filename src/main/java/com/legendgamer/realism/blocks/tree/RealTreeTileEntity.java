@@ -10,6 +10,7 @@ import net.minecraft.util.ITickable;
 
 public class RealTreeTileEntity extends TileEntity { 
 
+
 	public int stage;
 
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt)
@@ -29,4 +30,10 @@ public class RealTreeTileEntity extends TileEntity {
 		this.stage = stage;
 		this.markDirty();
 	}
-}
+	public IBlockState getStateFromStage() {
+		if(world.getBlockState(pos) instanceof BasicLogBlockTile) {
+		return world.getBlockState(pos).withProperty(BasicLogBlockTile.STAGE, stage);
+		} else 
+			return world.getBlockState(pos);
+	}
+ }

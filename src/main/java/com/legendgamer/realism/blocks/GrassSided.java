@@ -78,12 +78,12 @@ public class GrassSided extends BasicBlockWithInfo {
 
 		//	world.setBlockState(pos, state.withProperty(GRASS_STATE, EnumState.DRY));
 		if(world.isAirBlock(pos.up())) {
-			if(random.nextInt(250) == 0) {
+			if(random.nextInt(650) == 0) {
 				world.setBlockState(pos.up(), BlocksList.FERN.getDefaultState());
 			}
-			else if(random.nextInt(250) == 22) {
+			else if(random.nextInt(650) == 22) {
 				world.setBlockState(pos.up(), BlocksList.SEDGE.getDefaultState());
-			}	else if(random.nextInt(250) == 14) {
+			}	else if(random.nextInt(650) == 14) {
 				world.setBlockState(pos.up(), BlocksList.WIPE.getDefaultState());
 			}
 		}

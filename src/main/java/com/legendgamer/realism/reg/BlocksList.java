@@ -9,8 +9,9 @@ import com.legendgamer.realism.blocks.GrassSided;
 import com.legendgamer.realism.blocks.TallGrassAgeble;
 import com.legendgamer.realism.blocks.liquid.CustomWater;
 import com.legendgamer.realism.blocks.tree.BlockRealLeaves;
-import com.legendgamer.realism.blocks.tree.BlockRealTrees;
 import com.legendgamer.realism.blocks.tree.BlockTreeNewBranch;
+import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
+import com.legendgamer.realism.blocks.tree.frame.BlockThickBranch;
 import com.legendgamer.realism.blocks.tree.sapling.BlockFoliateSapling;
 import com.legendgamer.realism.blocks.tree.sapling.BlockPineSapling;
 import com.legendgamer.realism.blocks.tree.sapling.BlockSpruceSapling;
@@ -148,12 +149,15 @@ public class BlocksList {
 	public static final Block REAL_LINDEN_BRANCH = new BlockTreeNewBranch(Material.WOOD, "tree/real_linden_branch", 0, 0, SoundType.WOOD, Realism.tabTrees);
 	//Magmatic Trees
 	public static final Block REAL_PINE = new BasicLogBlockTile(Material.WOOD, "tree/real_pine", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_PINE_BRANCH);
+	//TB - Thick Branch
+	public static final Block REAL_TB_PINE = new BlockThickBranch(Material.WOOD, "tree/pine_thick_branch", 0, 0, SoundType.WOOD, Realism.tabTrees);
+	
 	public static final Block REAL_SPRUCE = new BasicLogBlockTile(Material.WOOD, "tree/real_spruce", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_SPRUCE_BRANCH);
 	public static final Block REAL_LARCH = new BasicLogBlockTile(Material.WOOD, "tree/real_larch", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_LARCH_BRANCH);
 	//Sedimentary Trees
 	public static final Block REAL_PEAR = new BasicLogBlockTile(Material.WOOD, "tree/real_pear", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_PEAR_BRANCH);
 	public static final Block REAL_POPLAR = new BasicLogBlockTile(Material.WOOD, "tree/real_poplar", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_POPLAR_BRANCH);
-	public static final Block REAL_ASH = new BasicLogBlockTile(Material.WOOD, "tree/real_ash", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_ASH_BRANCH);
+	public static final Block REAL_ASH = new BlockRealTrees(Material.WOOD, "tree/real_ash", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_ASH_BRANCH);
 	//Metamorphic Trees
 	public static final Block REAL_OAK = new BasicLogBlockTile(Material.WOOD, "tree/real_oak", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_OAK_BRANCH);
 	public static final Block REAL_BIRCH = new BasicLogBlockTile(Material.WOOD, "tree/real_birch", 0, 0, SoundType.WOOD, Realism.tabTrees, REAL_BIRCH_BRANCH);

@@ -69,6 +69,17 @@ public class RegBlocks {
 		registerBlock(BlocksList.REAL_POPLAR);
 		registerBlock(BlocksList.REAL_SPRUCE);
 		
+		registerBlock(BlocksList.REAL_TB_PINE);
+//		registerBlock(BlocksList.REAL_BIRCH);
+//		registerBlock(BlocksList.REAL_LARCH);
+//		registerBlock(BlocksList.REAL_LINDEN);
+//		registerBlock(BlocksList.REAL_OAK);
+//		registerBlock(BlocksList.REAL_PEAR);
+//		registerBlock(BlocksList.REAL_PINE);
+//		registerBlock(BlocksList.REAL_POPLAR);
+//		registerBlock(BlocksList.REAL_SPRUCE);
+//		
+		
 		registerBlock(BlocksList.REAL_ASH_LEAVES);
 		registerBlock(BlocksList.REAL_BIRCH_LEAVES);
 		registerBlock(BlocksList.REAL_LARCH_LEAVES);
@@ -174,6 +185,9 @@ public class RegBlocks {
 		registerRenderBlock(BlocksList.REAL_PINE);
 		registerRenderBlock(BlocksList.REAL_POPLAR);
 		registerRenderBlock(BlocksList.REAL_SPRUCE);
+		
+		
+		registerRenderBlock(BlocksList.REAL_TB_PINE);
 		
 		registerRenderBlock(BlocksList.REAL_ASH_LEAVES);
 		registerRenderBlock(BlocksList.REAL_BIRCH_LEAVES);

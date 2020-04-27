@@ -31,7 +31,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
+//un
 public class BasicLogBlockTile extends BlockTileEntity {
 	protected static final AxisAlignedBB[] AABB_STAGER = new AxisAlignedBB[] {
 			new AxisAlignedBB(0.377D, 0.0D, 0.377D, 0.623D, 1D, 0.623D),
@@ -183,34 +183,30 @@ public class BasicLogBlockTile extends BlockTileEntity {
 	}
 	public IBlockState getActualState(IBlockState state, IBlockAccess world, BlockPos pos)
 	{
-
-
 		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-		if(te.stage > 0) {
-			return state.withProperty(STAGE, te.stage);
-		}
-		return state;
+		World w = (World)world;
+		int stage = te.stage;
+		
+		return state.withProperty(STAGE, stage);
 	}
 
 	public void growBlock(World world, BlockPos pos, IBlockState state) {
 
 		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-		if(te.stage >= 6) {
-
+		if(te.stage >= 6) { 
 			int stage = te.stage;
 			world.removeTileEntity(pos);
 			world.setBlockState(pos, state.withProperty(STAGE, 6));
 			RealTreeTileEntity tile = (RealTreeTileEntity)world.getTileEntity(pos);
 			tile.stage = 6;
 		} else 
-			if(te.stage < 6) {
+			if(te.stage < 6 ) {
 				int stage = te.stage;
 				world.removeTileEntity(pos);
 				world.setBlockState(pos, state.withProperty(STAGE, stage+1));
 				RealTreeTileEntity tile = (RealTreeTileEntity)world.getTileEntity(pos);
 				tile.stage = stage + 1;
 			}
-
 	}
 
 	public void updateTick(World world, BlockPos pos, IBlockState state, Random random)
@@ -218,26 +214,27 @@ public class BasicLogBlockTile extends BlockTileEntity {
 		if(!world.isRemote) {
 			RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
 			world.scheduleUpdate(pos, this, 60);
-			//				int maxHeightTree = 0;
-			//				if(world.getBlockState(pos.down()) != this && state.getValue(STAGE) == 0) {
-			//					maxHeightTree = ThreadLocalRandom.current().nextInt(5,8);
-			//				//	System.out.println("maxHeightTree "+ te.stage );
-			//				}
-			//		
-			//				if(world.isAirBlock(pos.up()) && state.getValue(AXIS) == EnumAxis.Y ) {
-			//					if(world.getBlockState(pos.down(maxHeightTree)).getBlock() != this) {
-			//						world.setBlockState(pos.up(), state);
-			//					}
-			//					for(EnumFacing f : EnumFacing.HORIZONTALS) {
-			//						if(world.isAirBlock(pos.offset(f))) {
-			//							world.setBlockState(pos.offset(f), BlocksList.REAL_BIRCH_LEAVES.getDefaultState());
-			//						}
-			//					}
-		}
-
-		this.growBlock(world, pos, state);
+			int maxHeightTree = 0;
+			if(world.getBlockState(pos.down()) != this && state.getValue(STAGE) == 0) {
+				maxHeightTree = ThreadLocalRandom.current().nextInt(5,8);
+		
+			}
+//			System.out.println("maxHeightTree "+ te.stage );
+//			if(world.isAirBlock(pos.up()) && state.getValue(AXIS) == EnumAxis.Y ) {
+//				if(world.getBlockState(pos.down(maxHeightTree)).getBlock() != this) {
+//					world.setBlockState(pos.up(), state);
+				}
+				//					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+				//						if(world.isAirBlock(pos.offset(f))) {
+				//							world.setBlockState(pos.offset(f), BlocksList.REAL_BIRCH_LEAVES.getDefaultState());
+				//						}
+				//					}
 		//	}
-	}
+
+	//		this.growBlock(world, pos, state);
+		}
+		//	}
+//	}
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis)
 	{

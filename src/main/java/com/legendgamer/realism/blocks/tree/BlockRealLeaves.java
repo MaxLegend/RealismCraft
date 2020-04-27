@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
+import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
 import com.legendgamer.realism.capability.world_cap.DateProvider;
 import com.legendgamer.realism.capability.world_cap.IDate;
 

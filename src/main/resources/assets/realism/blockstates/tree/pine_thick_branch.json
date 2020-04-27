@@ -1,0 +1,18 @@
+{
+    "variants": {
+        "axis=z,stage=0":   { "model": "realism:tree/pine/stage_0", "x": 90 },
+        "axis=x,stage=0":   { "model": "realism:tree/pine/stage_0", "x": 90, "y": 90 },      
+        "axis=z,stage=1":   { "model": "realism:tree/pine/stage_1", "x": 90 },
+        "axis=x,stage=1":   { "model": "realism:tree/pine/stage_1", "x": 90, "y": 90 },      
+        "axis=z,stage=2":   { "model": "realism:tree/pine/stage_2", "x": 90 },
+        "axis=x,stage=2":   { "model": "realism:tree/pine/stage_2", "x": 90, "y": 90 },      
+        "axis=z,stage=3":   { "model": "realism:tree/pine/stage_3", "x": 90 },
+        "axis=x,stage=3":   { "model": "realism:tree/pine/stage_3", "x": 90, "y": 90 },      
+        "axis=z,stage=4":   { "model": "realism:tree/pine/stage_4", "x": 90 },
+        "axis=x,stage=4":   { "model": "realism:tree/pine/stage_4", "x": 90, "y": 90 },   
+        "axis=z,stage=5":   { "model": "realism:tree/pine/stage_5", "x": 90 },
+        "axis=x,stage=5":   { "model": "realism:tree/pine/stage_5", "x": 90, "y": 90 },  
+        "axis=z,stage=6":   { "model": "realism:tree/pine/stage_6", "x": 90 },
+        "axis=x,stage=6":   { "model": "realism:tree/pine/stage_6", "x": 90, "y": 90 }
+    }
+}

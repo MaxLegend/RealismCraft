@@ -1,21 +1,7 @@
 package com.legendgamer.realism.blocks.tree.frame;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.apache.commons.lang3.tuple.Pair;
-
-import com.google.common.collect.ImmutableSet;
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
-import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile;
-import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile.EnumAxis;
-import com.legendgamer.realism.blocks.tree.RealTreeTileEntity;
-
-import net.minecraft.block.BlockLog;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -27,179 +13,171 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.Rotation;
-import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.commons.lang3.tuple.Pair;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class BlockThickBranch extends BasicBlock {
 
-	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 6);
-	public static final PropertyEnum<EnumAxis> AXIS = PropertyEnum.<EnumAxis>create("axis", EnumAxis.class);
+    /*
+     * Чтобы каждый раз не создавть - объявляем нашу мапу где первый аргумент типа (Integer - номер метадаты),
+     * а второй аргумент типа (Pair<Integer, EnumAxis> - пара значений {STAGE; AXIS}
+     */
+    private final Map<Integer, Pair<Integer, EnumAxis>> metaToState = new HashMap<>();
 
-	public BlockThickBranch(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype,
-			CreativeTabs tab) {
-		super(materialIn, name, hardness, resistanse, soundtype, tab);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, 0).withProperty(AXIS, EnumAxis.X));
-	}
+    public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 6);
+    public static final PropertyEnum<EnumAxis> AXIS = PropertyEnum.<EnumAxis>create("axis", EnumAxis.class);
 
-	//Вот эти два дьявольских метода. Надо сохранять 2 поворота по X и Z, а также шесть значений роста.
-	//Два поворота 1 бит (0 - x, 1 - z), шесть роста - 3 бита. По идее.. сука, но я не знаю, почему это не работает!!!1!адинадин
-	public IBlockState getStateFromMeta(int meta)
-	{
+    public BlockThickBranch(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype, CreativeTabs tab) {
+        super(materialIn, name, hardness, resistanse, soundtype, tab);
 
-	//	System.out.println("kto-to lox");
-		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
-		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
-			for(int j = 0; j <= 5; j++) {
-				metaToState.add(Pair.of(j, s));
-			}
-		}
-		Pair nowPair = metaToState.get(meta);
-		if(meta < 0) {
-			return this.getDefaultState().withProperty(STAGE, (int)nowPair.getLeft()).withProperty(AXIS, (EnumAxis)nowPair.getRight());
+        /*
+         * Инициализируем нашу мапу. i - значение поворота 0 - 1
+         */
+        for (int i = 0; i < EnumAxis.values().length; i++) {
+            //Текущее значение поворота
+            EnumAxis axis = EnumAxis.values()[i];
+            // j - значение стадии роста
+            for (int j = 0; j < 6; j++) {
+                metaToState.put(
+                        /* Это индекс или проще говоря наша метадата. Если вкратце -
+                         * для каждого поворота мы берём все стадии роста по очереди.
+                         * Чтобы лучше понять, посчитай для каждой метадаты от нуля*/
+                        (i * 6) + j,
+                        /* Эта пара значений {STAGE; AXIS} - собственно уникальная комбинация значений
+                         * для каждой из 12 метадат (0 - 11)*/
+                        Pair.of(j, axis));
+            }
+        }
 
-		} else {return this.getDefaultState();
-		}
+        setDefaultState(blockState.getBaseState().withProperty(STAGE, 0).withProperty(AXIS, EnumAxis.X));
+    }
 
-	}
-	public int getMetaFromState(IBlockState state)
-	{
+    public IBlockState getStateFromMeta(int meta) {
+        /* Так как наша карта (HashMap) имеет вид <ИМЯ-КЛЮЧ, ОБЪЕКТ-ЗНАЧЕНИЕ>,
+         * мы обратимся к объекту указав в качестве ключа метадату и получим пару значений {STAGE; AXIS}
+         * уникальных для этой метадаты
+         */
+        Pair<Integer, EnumAxis> nowPair = metaToState.get(meta);
+        //Пара будет равняться null если для метадаты не существует стэйта, то-есть если метадата больше 11
+        if (nowPair != null) {
+            return getDefaultState().withProperty(STAGE, nowPair.getLeft()).withProperty(AXIS, nowPair.getRight());
+        } else return getDefaultState();
+    }
 
-		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
+    public int getMetaFromState(IBlockState state) {
+        /* Это не магические числа, мы просто выполняем
+         * операцию которую производили в конструкторе (i * 6) + j
+         * Грубо говоря, мы просто вычисляем метадату, так же как придумали раньше
+         */
+        return (state.getValue(AXIS).ordinal() * 6) + state.getValue(STAGE);
+    }
 
-		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
-			for(int j = 0; j <= 5; j++) {
-				metaToState.add(Pair.of(j, s));
-			}
-		}
-		System.out.println("metaToState " + metaToState);
-		Pair<Integer,EnumAxis> pair = Pair.of(state.getValue(STAGE), state.getValue(AXIS));
-		for(int i = 0; i < metaToState.indexOf(pair); i++)  {
-			if(metaToState.get(i).equals(pair)) {
-				System.out.println("kto-to lox");
-				return i;
-			}
-		}
-		return metaToState.indexOf(pair);
-	
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (state.getValue(STAGE) < 6) world.setBlockState(pos, state.withProperty(STAGE, state.getValue(STAGE) + 1));
+        return true;
+    }
 
-	}
+    @Override
+    public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis) {
+        IBlockState state = world.getBlockState(pos);
+        for (net.minecraft.block.properties.IProperty<?> prop : state.getProperties().keySet()) {
+            if (prop.getName().equals("axis")) {
+                world.setBlockState(pos, state.cycleProperty(prop));
+                return true;
+            }
+        }
+        return false;
+    }
 
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
-	{
-		int i = 0;
-		//i = state.getValue(STAGE) << 2;
-		//System.out.println(Integer.toBinaryString(i));
+    public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 
-		if(state.getValue(STAGE) < 6) world.setBlockState(pos, state.withProperty(STAGE, state.getValue(STAGE)+1));
-
-		return true;
-	}
-
-	@Override
-	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis)
-	{
-		IBlockState state = world.getBlockState(pos);
-		for (net.minecraft.block.properties.IProperty<?> prop : state.getProperties().keySet())
-		{
-			if (prop.getName().equals("axis"))
-			{
-				world.setBlockState(pos, state.cycleProperty(prop));
-				return true;
-			}
-		}
-		return false;
-	}
-	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
-	{
-
-		return this.getStateFromMeta(meta).withProperty(AXIS, EnumAxis.fromFacingAxis(facing.getAxis()));
-	}
+        return getStateFromMeta(meta).withProperty(AXIS, EnumAxis.fromFacingAxis(facing.getAxis()));
+    }
 
 
-	public IBlockState withRotation(IBlockState state, Rotation rot)
-	{
-		switch (rot)
-		{
-		case COUNTERCLOCKWISE_90:
-		case CLOCKWISE_90:
+    public IBlockState withRotation(IBlockState state, Rotation rot) {
+        switch (rot) {
+            case COUNTERCLOCKWISE_90:
+            case CLOCKWISE_90:
 
-			switch ((EnumAxis)state.getValue(AXIS))
-			{
-			case X:
-				return state.withProperty(AXIS, EnumAxis.Z);
-			case Z:
-				return state.withProperty(AXIS, EnumAxis.X);
-			default:
-				return state;
-			}
+                switch ((EnumAxis) state.getValue(AXIS)) {
+                    case X:
+                        return state.withProperty(AXIS, EnumAxis.Z);
+                    case Z:
+                        return state.withProperty(AXIS, EnumAxis.X);
+                    default:
+                        return state;
+                }
 
-		default:
-			return state;
-		}
-	}
-	@Override
-	public boolean isOpaqueCube(IBlockState state) {
-		return false;
-	}
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		return true;
-	}
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFullCube(IBlockState state) {
-		if(state.getValue(STAGE) == 6) {
-			return true;
-		}
-		return false;
-	} 	
+            default:
+                return state;
+        }
+    }
+
+    @Override
+    public boolean isOpaqueCube(IBlockState state) {
+        return false;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+        return true;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean isFullCube(IBlockState state) {
+        if (state.getValue(STAGE) == 6) {
+            return true;
+        }
+        return false;
+    }
 
 
-	protected BlockStateContainer createBlockState()
-	{
-		return new BlockStateContainer(this, new IProperty[] {STAGE, AXIS});
-	}
-	public static enum EnumAxis implements IStringSerializable {
-		X("x"),
-		Z("z");
+    protected BlockStateContainer createBlockState() {
+        return new BlockStateContainer(this, new IProperty[]{STAGE, AXIS});
+    }
 
-		private final String name;
+    public static enum EnumAxis implements IStringSerializable {
+        X("x"),
+        Z("z");
 
-		private EnumAxis(String name)
-		{
-			this.name = name;
-		}
+        private final String name;
 
-		public String toString()
-		{
-			return this.name;
-		}
+        private EnumAxis(String name) {
+            this.name = name;
+        }
 
-		public static EnumAxis fromFacingAxis(Axis axis)
-		{
-			switch (axis)
-			{
-			case X:
-				return X;
-			case Z:
-				return Z;
-			default:
-				return X;
-			}
-		}
+        public String toString() {
+            return name;
+        }
 
-		public String getName()
-		{
-			return this.name;
-		}
+        public static EnumAxis fromFacingAxis(Axis axis) {
+            switch (axis) {
+                case X:
+                    return X;
+                case Z:
+                    return Z;
+                default:
+                    return X;
+            }
+        }
 
-	}
+        public String getName() {
+            return name;
+        }
+
+    }
 }

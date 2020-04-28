@@ -2,6 +2,7 @@ package com.legendgamer.realism.blocks.tree.frame;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,25 +52,27 @@ public class BlockThickBranch extends BasicBlock {
 	//ƒва поворота 1 бит (0 - x, 1 - z), шесть роста - 3 бита. ѕо идее.. сука, но € не знаю, почему это не работает!!!1!адинадин
 	public IBlockState getStateFromMeta(int meta)
 	{
-		if(meta < 0) {
-			System.out.println("kto-to lox");
-			ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
-			for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
-				for(int j = 0; j <= 5; j++) {
-					metaToState.add(Pair.of(j, s));
-				}
+
+	//	System.out.println("kto-to lox");
+		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
+		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
+			for(int j = 0; j <= 5; j++) {
+				metaToState.add(Pair.of(j, s));
 			}
-			Pair nowPair = metaToState.get(meta);
+		}
+		Pair nowPair = metaToState.get(meta);
+		if(meta < 0) {
 			return this.getDefaultState().withProperty(STAGE, (int)nowPair.getLeft()).withProperty(AXIS, (EnumAxis)nowPair.getRight());
+
 		} else {return this.getDefaultState();
 		}
 
 	}
 	public int getMetaFromState(IBlockState state)
 	{
-		
+
 		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
-		
+
 		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
 			for(int j = 0; j <= 5; j++) {
 				metaToState.add(Pair.of(j, s));
@@ -77,7 +80,14 @@ public class BlockThickBranch extends BasicBlock {
 		}
 		System.out.println("metaToState " + metaToState);
 		Pair<Integer,EnumAxis> pair = Pair.of(state.getValue(STAGE), state.getValue(AXIS));
+		for(int i = 0; i < metaToState.indexOf(pair); i++)  {
+			if(metaToState.get(i).equals(pair)) {
+				System.out.println("kto-to lox");
+				return i;
+			}
+		}
 		return metaToState.indexOf(pair);
+	
 
 	}
 

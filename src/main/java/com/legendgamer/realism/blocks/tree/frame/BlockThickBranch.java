@@ -48,12 +48,10 @@ public class BlockThickBranch extends BasicBlock {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, 0).withProperty(AXIS, EnumAxis.X));
 	}
 
-	//Вот эти два дьявольских метода. Надо сохранять 2 поворота по X и Z, а также шесть значений роста.
-	//Два поворота 1 бит (0 - x, 1 - z), шесть роста - 3 бита. По идее.. сука, но я не знаю, почему это не работает!!!1!адинадин
+
 	public IBlockState getStateFromMeta(int meta)
 	{
 
-	//	System.out.println("kto-to lox");
 		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
 		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
 			for(int j = 0; j <= 5; j++) {
@@ -71,22 +69,22 @@ public class BlockThickBranch extends BasicBlock {
 	public int getMetaFromState(IBlockState state)
 	{
 
-		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
-
-		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
-			for(int j = 0; j <= 5; j++) {
-				metaToState.add(Pair.of(j, s));
-			}
-		}
-		System.out.println("metaToState " + metaToState);
-		Pair<Integer,EnumAxis> pair = Pair.of(state.getValue(STAGE), state.getValue(AXIS));
-		for(int i = 0; i < metaToState.indexOf(pair); i++)  {
-			if(metaToState.get(i).equals(pair)) {
-				System.out.println("kto-to lox");
-				return i;
-			}
-		}
-		return metaToState.indexOf(pair);
+//		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
+//
+//		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
+//			for(int j = 0; j <= 5; j++) {
+//				metaToState.add(Pair.of(j, s));
+//			}
+//		}
+//	//	System.out.println("metaToState " + metaToState);
+//		Pair<Integer,EnumAxis> pair = Pair.of(state.getValue(STAGE), state.getValue(AXIS));
+//		for(int i = 0; i < metaToState.indexOf(pair); i++)  {
+//			if(metaToState.get(i).equals(pair)) {
+//				System.out.println("kto-to lox");
+//				return i;
+//			}
+//		}
+		return 0;
 	
 
 	}

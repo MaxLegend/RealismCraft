@@ -1,5 +1,13 @@
 package com.legendgamer.realism.blocks.tree.frame;
 
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.tuple.Pair;
+
+import com.google.common.collect.ImmutableSet;
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
 import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile;
 import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile.EnumAxis;
@@ -29,83 +37,61 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockThickBranch extends BasicBlock {
-	
+
 	public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 6);
 	public static final PropertyEnum<EnumAxis> AXIS = PropertyEnum.<EnumAxis>create("axis", EnumAxis.class);
-	
+
 	public BlockThickBranch(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype,
 			CreativeTabs tab) {
 		super(materialIn, name, hardness, resistanse, soundtype, tab);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(STAGE, 0).withProperty(AXIS, EnumAxis.X));
 	}
-	
+
 	//Вот эти два дьявольских метода. Надо сохранять 2 поворота по X и Z, а также шесть значений роста.
 	//Два поворота 1 бит (0 - x, 1 - z), шесть роста - 3 бита. По идее.. сука, но я не знаю, почему это не работает!!!1!адинадин
 	public IBlockState getStateFromMeta(int meta)
 	{
-		EnumAxis enumfacing$axis = EnumAxis.X;
-		
-		int i = meta & 12;
-	//	System.out.println("getStateFromMeta meta: " + i );
-	//	System.out.println("getStateFromMeta i: " + i );
-		
-		if (i == 4)
-		{
-			
-			enumfacing$axis = EnumAxis.X;
-			
+		if(meta < 0) {
+			System.out.println("kto-to lox");
+			ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
+			for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
+				for(int j = 0; j <= 5; j++) {
+					metaToState.add(Pair.of(j, s));
+				}
+			}
+			Pair nowPair = metaToState.get(meta);
+			return this.getDefaultState().withProperty(STAGE, (int)nowPair.getLeft()).withProperty(AXIS, (EnumAxis)nowPair.getRight());
+		} else {return this.getDefaultState();
 		}
-		else if (i == 8)
-		{
-			enumfacing$axis = EnumAxis.Z;
-			
-		}
-	
-		return this.getDefaultState().withProperty(AXIS, enumfacing$axis).withProperty(STAGE, Integer.valueOf(((meta & 6))));
-		
+
 	}
 	public int getMetaFromState(IBlockState state)
 	{
-        int i = 0;
-    //	System.out.println("getMetaFromState STAGE: " + state.getValue(STAGE));
-    //   i = i | ((Integer)state.getValue(STAGE)).intValue() << 4;
+		
+		ArrayList<Pair<Integer,EnumAxis>> metaToState = new ArrayList();
+		
+		for(EnumAxis s : ImmutableSet.of(EnumAxis.X, EnumAxis.Z)) {
+			for(int j = 0; j <= 5; j++) {
+				metaToState.add(Pair.of(j, s));
+			}
+		}
+		System.out.println("metaToState " + metaToState);
+		Pair<Integer,EnumAxis> pair = Pair.of(state.getValue(STAGE), state.getValue(AXIS));
+		return metaToState.indexOf(pair);
 
-	     switch ((EnumAxis)state.getValue(AXIS))
-	        {
-	            case X:
-	                i |= 4;
-	                break;
-	            case Z:
-	                i |= 8;
-	                break;
-	        }
-	     i = i | ((Integer)state.getValue(STAGE)).intValue();
-	// 	System.out.println("getMetaFromState post i: " + i);
-		return i;
 	}
-	
+
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
-        int i = 0;
-       i = state.getValue(STAGE) << 2;
-       System.out.println(Integer.toBinaryString(i));
-       /* stage =
-        * full meta 1111 
-        6 - 110
-        5 - 101
-        4 - 100
-        3 - 11
-        2 - 10
-        1 - 1
-        0 - 0
-       */
-       if(state.getValue(STAGE) < 6) world.setBlockState(pos, state.withProperty(STAGE, state.getValue(STAGE)+1));
-//		RealTreeTileEntity te = (RealTreeTileEntity)this.getTileEntity(world, pos);
-//		int stage = state.getValue(STAGE);
-//		if(stage < 6) world.setBlockState(pos, state.withProperty(STAGE, stage+1));
+		int i = 0;
+		//i = state.getValue(STAGE) << 2;
+		//System.out.println(Integer.toBinaryString(i));
+
+		if(state.getValue(STAGE) < 6) world.setBlockState(pos, state.withProperty(STAGE, state.getValue(STAGE)+1));
+
 		return true;
 	}
-	
+
 	@Override
 	public boolean rotateBlock(World world, BlockPos pos, EnumFacing axis)
 	{
@@ -122,11 +108,11 @@ public class BlockThickBranch extends BasicBlock {
 	}
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
 	{
-		
+
 		return this.getStateFromMeta(meta).withProperty(AXIS, EnumAxis.fromFacingAxis(facing.getAxis()));
 	}
-	
-	
+
+
 	public IBlockState withRotation(IBlockState state, Rotation rot)
 	{
 		switch (rot)

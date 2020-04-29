@@ -1,0 +1,35 @@
+{
+	"credit": "Made special for SovietLab",
+	"parent": "block/cube_all",
+	"textures": {
+		"0": "realism:blocks/tree/oak/oak_side",
+		"2": "realism:blocks/tree/oak/oak_top_0",
+		"particle": "realism:blocks/tree/oak/oak_side"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [0, 0, 4, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 16], "texture": "#0"},
+				"south": {"uv": [0, 0, 4, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 4, 16], "texture": "#0"},
+				"up": {"uv": [6, 6, 10, 10], "texture": "#2"},
+				"down": {"uv": [6, 6, 10, 10], "texture": "#2"}
+			}
+		},
+		{
+			"from": [5.999, 6, 0],
+			"to": [10.001, 10, 16],
+			"faces": {
+				"north": {"uv": [6, 6, 10, 10], "rotation": 90, "texture": "#2"},
+				"east": {"uv": [0, 0, 4, 16], "rotation": 270, "texture": "#0"},
+				"south": {"uv": [6, 6, 10, 10], "rotation": 90, "texture": "#2"},
+				"west": {"uv": [0, 0, 4, 16], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [0, 0, 4, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [0, 0, 4, 16], "texture": "#0"}
+			}
+		}
+	]
+}

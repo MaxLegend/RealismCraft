@@ -69,17 +69,18 @@ public class RegBlocks {
 		registerBlock(BlocksList.REAL_POPLAR);
 		registerBlock(BlocksList.REAL_SPRUCE);
 		
+		//thick branch
 		registerBlock(BlocksList.REAL_TB_PINE);
-//		registerBlock(BlocksList.REAL_BIRCH);
-//		registerBlock(BlocksList.REAL_LARCH);
-//		registerBlock(BlocksList.REAL_LINDEN);
-//		registerBlock(BlocksList.REAL_OAK);
-//		registerBlock(BlocksList.REAL_PEAR);
-//		registerBlock(BlocksList.REAL_PINE);
-//		registerBlock(BlocksList.REAL_POPLAR);
-//		registerBlock(BlocksList.REAL_SPRUCE);
+		registerBlock(BlocksList.REAL_TB_ASH);
+		registerBlock(BlocksList.REAL_TB_POPLAR);
+		registerBlock(BlocksList.REAL_TB_SPRUCE);
+		registerBlock(BlocksList.REAL_TB_OAK);
+		registerBlock(BlocksList.REAL_TB_BIRCH);
+		registerBlock(BlocksList.REAL_TB_PEAR);
+		registerBlock(BlocksList.REAL_TB_LARCH);
+		registerBlock(BlocksList.REAL_TB_LINDEN);
 //		
-		
+		//leaves
 		registerBlock(BlocksList.REAL_ASH_LEAVES);
 		registerBlock(BlocksList.REAL_BIRCH_LEAVES);
 		registerBlock(BlocksList.REAL_LARCH_LEAVES);
@@ -188,6 +189,14 @@ public class RegBlocks {
 		
 		
 		registerRenderBlock(BlocksList.REAL_TB_PINE);
+		registerRenderBlock(BlocksList.REAL_TB_ASH);
+		registerRenderBlock(BlocksList.REAL_TB_POPLAR);
+		registerRenderBlock(BlocksList.REAL_TB_SPRUCE);
+		registerRenderBlock(BlocksList.REAL_TB_OAK);
+		registerRenderBlock(BlocksList.REAL_TB_BIRCH);
+		registerRenderBlock(BlocksList.REAL_TB_PEAR);
+		registerRenderBlock(BlocksList.REAL_TB_LARCH);
+		registerRenderBlock(BlocksList.REAL_TB_LINDEN);
 		
 		registerRenderBlock(BlocksList.REAL_ASH_LEAVES);
 		registerRenderBlock(BlocksList.REAL_BIRCH_LEAVES);

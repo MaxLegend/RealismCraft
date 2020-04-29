@@ -2,6 +2,8 @@ package com.legendgamer.realism.blocks.tree;
 
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
 import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile;
+import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
+import com.legendgamer.realism.blocks.tree.frame.BlockThickBranch;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -113,7 +115,7 @@ public class BlockTreeNewBranch extends BasicBlock{
 	private boolean canConnectToBranch(IBlockAccess world, BlockPos pos, EnumFacing facing)
 	{
 		Block connector_branch = world.getBlockState(pos.offset(facing)).getBlock();
-		if(connector_branch instanceof BasicLogBlockTile || connector_branch instanceof BlockTreeNewBranch ||  connector_branch instanceof BlockRealLeaves) {
+		if(connector_branch instanceof BlockRealTrees || connector_branch instanceof BlockTreeNewBranch ||  connector_branch instanceof BlockRealLeaves||  connector_branch instanceof BlockThickBranch) {
 			return true;
 		} else return false;
 	}

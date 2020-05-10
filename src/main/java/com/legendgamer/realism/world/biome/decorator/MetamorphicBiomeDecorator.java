@@ -2,11 +2,18 @@ package com.legendgamer.realism.world.biome.decorator;
 
 import java.util.Random;
 
+import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
 import com.legendgamer.realism.config.ConfigManager;
 import com.legendgamer.realism.reg.BlocksList;
+import com.legendgamer.realism.reg.RegBiomes;
+import com.legendgamer.realism.world.biome.primary.MetamorphicBiome;
 import com.legendgamer.realism.world.gen.feature.WorldGenRealismOre;
+import com.legendgamer.realism.world.gen.trees.foliate.GenBirchTree;
+import com.legendgamer.realism.world.gen.trees.foliate.GenLindenTree;
+import com.legendgamer.realism.world.gen.trees.foliate.GenOakTree;
 
 import io.netty.util.internal.ThreadLocalRandom;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -35,23 +42,77 @@ public class MetamorphicBiomeDecorator extends BiomeDecorator {
 	public void decorate(World world, Random random, Biome biome, BlockPos pos)
 	{
 		this.chunkPos = pos;
-
+		
 		this.stonecoal_gen = new WorldGenRealismOre(BlocksList.METAMORPHIC_COAL.getDefaultState(), coalsize, BlocksList.METAMORPHIC_STONE);
 		this.copper_gen = new WorldGenRealismOre(BlocksList.METAMORPHIC_COPPER.getDefaultState(), coppersize,BlocksList.METAMORPHIC_STONE);
 		this.tin_gen = new WorldGenRealismOre(BlocksList.METAMORPHIC_TIN.getDefaultState(), tinsize,BlocksList.METAMORPHIC_STONE);
 		this.titan_gen = new WorldGenRealismOre(BlocksList.METAMORPHIC_TITAN.getDefaultState(), titansize,BlocksList.METAMORPHIC_STONE);
 		this.nickel_gen = new WorldGenRealismOre(BlocksList.METAMORPHIC_NICKEL.getDefaultState(), nickelsize,BlocksList.METAMORPHIC_STONE);
 		this.vanadium_gen = new WorldGenRealismOre(BlocksList.METAMORPHIC_VANADIUM.getDefaultState(), vanadiumsize,BlocksList.METAMORPHIC_STONE);
-
+		if(biome == RegBiomes.METAMORPHIC_FOREST) {
+			generateTree(world, random, pos);		
+		}
+		
+	
 		this.genDecorations(biome, world, random);
 
+	} 
+	public WorldGenerator genTreeBirch = new GenBirchTree();
+	public WorldGenerator genTreeLinden = new GenLindenTree();
+	public WorldGenerator genTreeOak = new GenOakTree();
+
+	//public WorldGenerator genTree1 = new GenBirchTree();
+	//public WorldGenerator genTree1 = new GenBirchTree();
+	public void generateTree(World world, Random r, BlockPos p) {
+		ThreadLocalRandom rt = ThreadLocalRandom.current();
+		for (int i = 0; i < 4; ++i)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				if(rt.nextInt(16) == 4) {
+				//	int k = i * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
+				//	int l = j * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
+					int l = j * 4 + 4 + r.nextInt(8);
+					int k = i * 4 + 4  + r.nextInt(8) ;
+					BlockPos blockpos = world.getHeight(p.add(k, 0, l));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(blockpos.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(blockpos.offset(f).offset(f)) instanceof BlockRealTrees)&& !(world.getBlockState(blockpos.offset(f).offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeBirch.generate(world, r, blockpos);
+						}
+					}
+				}
+				if(rt.nextInt(14) == 4) {
+					int l2 = j * 4  + r.nextInt(8) ;
+					int k2 = i* 4   + r.nextInt(8) ;
+					BlockPos blockpos2 = world.getHeight(p.add(k2, 0, l2));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(p.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(p.offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeLinden.generate(world, r, blockpos2);
+						} 
+					}
+				}
+				if(rt.nextInt(14) == 4) {
+					int l3 = j * 4  + r.nextInt(8) ;
+					int k3 = i* 4   + r.nextInt(8) ;
+					BlockPos blockpos3 = world.getHeight(p.add(k3, 0, l3));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(p.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(p.offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeOak.generate(world, r, blockpos3);
+
+						} 
+					}
+				}
+			}
+		}
+
+		//	new SpruceTreeGenerator(BlocksList.REAL_SPRUCE, BlocksList.REAL_SPRUCE_BRANCH, BlocksList.REAL_SPRUCE_LEAVES).generate(world, random, this.chunkPos);
 	}
 	@Override
 	protected void genDecorations(Biome biome, World world, Random random)
 	{
 		this.generateOres(world, random);
 
-		
+
 	}
 	protected void genOre(World worldIn, Random random, int blockCount, WorldGenerator generator, int minHeight, int maxHeight)
 	{

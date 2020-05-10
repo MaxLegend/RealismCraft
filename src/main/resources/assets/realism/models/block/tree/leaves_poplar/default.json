@@ -3,7 +3,7 @@
 	"parent": "block/cube_all",
 	"textures": {
 		"0": "realism:blocks/leaves/real_poplar_lv",
-		"1": "realism:blocks/tree/real_poplar_side",
+		"1": "realism:blocks/tree/poplar/poplar_side",
 		"particle": "realism:blocks/leaves/real_poplar_lv"
 	},
 	"elements": [
@@ -17,18 +17,6 @@
 				"west": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0},
 				"up": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0},
 				"down": {"uv": [0, 0, 16, 16], "texture": "#0", "tintindex": 0}
-			}
-		},
-		{
-			"from": [7, 7, 7],
-			"to": [9, 9, 9],
-			"faces": {
-				"north": {"uv": [0, 0, 2, 2], "texture": "#1"},
-				"east": {"uv": [0, 0, 2, 2], "texture": "#1"},
-				"south": {"uv": [0, 0, 2, 2], "texture": "#1"},
-				"west": {"uv": [0, 0, 2, 2], "texture": "#1"},
-				"up": {"uv": [0, 0, 2, 2], "texture": "#1"},
-				"down": {"uv": [0, 0, 2, 2], "texture": "#1"}
 			}
 		}
 	],

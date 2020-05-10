@@ -2,18 +2,11 @@ package com.legendgamer.realism.world.gen.chunk;
 
 
 import com.legendgamer.realism.reg.BlocksList;
-import com.legendgamer.realism.reg.RegBiomes;
 import com.legendgamer.realism.world.gen.feature.RealMapGenCaves;
-import com.legendgamer.realism.world.gen.layer.GenLayerBiomes;
-import com.legendgamer.realism.world.gen.trees.layergen.FoliateTreeGenerator;
-import com.legendgamer.realism.world.gen.trees.layergen.PineTreeGenerator;
-import com.legendgamer.realism.world.gen.trees.layergen.SpruceTreeGenerator;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;

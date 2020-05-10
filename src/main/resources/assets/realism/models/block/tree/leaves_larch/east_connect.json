@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "realism:blocks/tree/real_larch_side",
+		"1": "realism:blocks/tree/larch/larch_side",
 		"particle": "realism:blocks/leaves/real_larch_lv"
 	},
 	"elements": [

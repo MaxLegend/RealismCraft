@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "realism:blocks/tree/real_oak_side",
+	"1": "realism:blocks/tree/oak/oak_side",
 		"particle": "realism:blocks/leaves/real_oak_lv"
 	},
 	"elements": [

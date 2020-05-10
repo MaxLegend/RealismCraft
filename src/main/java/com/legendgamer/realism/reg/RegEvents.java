@@ -2,7 +2,6 @@ package com.legendgamer.realism.reg;
 
 import com.legendgamer.realism.capevent.WorldCAPEventHandler;
 import com.legendgamer.realism.event.client.DebugGameOverlayEvents;
-import com.legendgamer.realism.event.client.RenderExBranch;
 import com.legendgamer.realism.seasons.GradientTicker;
 import com.legendgamer.realism.seasons.SeasonEventerClient;
 import com.legendgamer.realism.seasons.SeasonEventerServer;
@@ -20,6 +19,7 @@ public class RegEvents {
 	public static void Server() {
 		register(new SeasonEventerServer());
 		register(new WorldCAPEventHandler());
+	//	register(new BreakLeaves());
 	}
 
 	public static void register(Object event) {

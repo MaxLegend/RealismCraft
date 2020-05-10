@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "realism:blocks/tree/real_pear_side",
+		"1": "realism:blocks/tree/pear/pear_side",
 		"particle": "realism:blocks/leaves/real_pear_lv"
 	},
 	"elements": [

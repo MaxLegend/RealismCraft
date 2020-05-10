@@ -1,8 +1,9 @@
 package com.legendgamer.realism.blocks.tree.sapling;
 
 import com.legendgamer.realism.API.BasicBlock.BasicBlockBush;
-import com.legendgamer.realism.API.BasicBlock.BasicBlockSide;
-import com.legendgamer.realism.world.gen.trees.layergen.FoliateTreeGenerator;
+import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
+import com.legendgamer.realism.reg.BlocksList;
+import com.legendgamer.realism.world.gen.trees.foliate.GenPoplarTree;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -30,13 +31,19 @@ public class BlockFoliateSapling extends BasicBlockBush {
 		this.branchBlock = branch;
 		this.leavesBlock = leaves;
 	}
+    public boolean isReplaceable(IBlockAccess worldIn, BlockPos pos)
+    {
+        return true;
+    }
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
 	{
 		if(!world.isRemote) {
-			new FoliateTreeGenerator(logBlock, branchBlock, leavesBlock).generate(world, world.rand, pos);
+			new GenPoplarTree().generate(world, world.rand, pos);
+			world.setBlockState(pos, BlocksList.REAL_ASH.getDefaultState().withProperty(BlockRealTrees.STAGE, 6));
+		//	new FoliateTreeGenerator(logBlock, branchBlock, leavesBlock).generate(world, world.rand, pos);
 			return true;
 		}
-		return false;
+		return true;
 	}
 	@Override
 	@SideOnly(Side.CLIENT)

@@ -1,6 +1,6 @@
 package com.legendgamer.realism.reg;
 
-import com.legendgamer.realism.blocks.tree.RealTreeTileEntity;
+import com.legendgamer.realism.blocks.tree.unused.RealTreeTileEntity;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

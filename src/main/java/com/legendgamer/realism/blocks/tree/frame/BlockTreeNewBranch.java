@@ -1,9 +1,12 @@
-package com.legendgamer.realism.blocks.tree;
+package com.legendgamer.realism.blocks.tree.frame;
+
+import java.util.Random;
 
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
 import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile;
-import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
-import com.legendgamer.realism.blocks.tree.frame.BlockThickBranch;
+import com.legendgamer.realism.blocks.tree.util.EnumTreeType;
+import com.legendgamer.realism.blocks.tree.util.ITreeType;
+import com.legendgamer.realism.reg.BlocksList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -13,6 +16,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
@@ -22,7 +26,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockTreeNewBranch extends BasicBlock{
+public class BlockTreeNewBranch extends BasicBlock implements ITreeType {
 
 	
 	public static final PropertyBool DEFAULT = PropertyBool.create("default");
@@ -36,6 +40,7 @@ public class BlockTreeNewBranch extends BasicBlock{
 	
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
+		world.scheduleUpdate(pos, this, 60);
 //		int chance = world.rand.nextInt(20);
 //		if(!world.isRemote) {
 //			if(chance == 12 || chance == 8) {
@@ -60,14 +65,29 @@ public class BlockTreeNewBranch extends BasicBlock{
 //		
 //		}
 	}
-
+	EnumTreeType type;
 	public BlockTreeNewBranch(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype,
 			CreativeTabs tab) {
+
 		super(materialIn, name, hardness, resistanse, soundtype, tab);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DEFAULT, true));
 		this.setTickRandomly(true);
-
 	
+	
+	}
+	@Override
+	public Block setType(EnumTreeType type) {
+		this.type = type;
+		return this;
+	}
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random r)
+	{
+//		for(EnumFacing f : EnumFacing.VALUES) {
+//			if(world.getBlockState(pos.offset(f)) == Blocks.AIR.getDefaultState()) {
+//				world.setBlockState(pos.offset(f), BlocksList.REAL_ASH_LEAVES.getDefaultState());
+//			}
+//			}
 	}
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)
 	{
@@ -136,6 +156,12 @@ public class BlockTreeNewBranch extends BasicBlock{
 	protected BlockStateContainer createBlockState()
 	{
 		return new BlockStateContainer(this, new IProperty[] {DEFAULT, DOWN_BR, UP_BR, NORTH_BR, SOUTH_BR, WEST_BR, EAST_BR});
+	}
+
+	@Override
+	public EnumTreeType getType() {
+		// TODO Auto-generated method stub
+		return type;
 	}
 }
 

@@ -6,19 +6,12 @@ import com.legendgamer.realism.config.ConfigManager;
 import com.legendgamer.realism.reg.BlocksList;
 import com.legendgamer.realism.reg.RegBiomes;
 import com.legendgamer.realism.world.gen.feature.WorldGenRealismOre;
-import com.legendgamer.realism.world.gen.trees.WorldGenAshTree;
-import com.legendgamer.realism.world.gen.trees.layergen.FoliateTreeGenerator;
-import com.legendgamer.realism.world.gen.trees.layergen.PineTreeGenerator;
-import com.legendgamer.realism.world.gen.trees.layergen.SpruceTreeGenerator;
 
 import io.netty.util.internal.ThreadLocalRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDecorator;
-import net.minecraft.world.biome.BiomeForest;
-import net.minecraft.world.gen.feature.WorldGenAbstractTree;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class MagmaticBiomeDecorator extends BiomeDecorator {

@@ -1,6 +1,7 @@
 package com.legendgamer.realism.packets;
 
 import com.legendgamer.realism.Realism;
+import com.legendgamer.realism.packets.Client.CheckPlayerDestrMessageToServer;
 import com.legendgamer.realism.packets.Client.DaySyncMessage;
 import com.legendgamer.realism.packets.Client.MonthSyncMessage;
 import com.legendgamer.realism.packets.Client.YearSyncMessage;
@@ -31,8 +32,8 @@ public class NetworkHandler {
         
         network.registerMessage(YearSyncMessageServer.Handler.class,YearSyncMessageServer.class, 8, Side.SERVER);
         network.registerMessage(YearSyncMessage.Handler.class, YearSyncMessage.class, 9, Side.CLIENT);
-     //   network.registerMessage(PlayerWeightMessage.Handler.class, PlayerWeightMessage.class, 4, Side.CLIENT);
-  //      network.registerMessage(PlayerWeightMessageServer.Handler.class, PlayerWeightMessageServer.class, 5, Side.SERVER);
+    
+        network.registerMessage(CheckPlayerDestrMessageToServer.Handler.class, CheckPlayerDestrMessageToServer.class, 10, Side.SERVER);
     }
 
 

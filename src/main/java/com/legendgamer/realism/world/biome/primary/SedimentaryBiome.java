@@ -7,6 +7,8 @@ import com.legendgamer.realism.world.biome.base.BiomeBase;
 import com.legendgamer.realism.world.biome.base.EnumBiomes;
 import com.legendgamer.realism.world.biome.decorator.MetamorphicBiomeDecorator;
 import com.legendgamer.realism.world.biome.decorator.SedimentaryBiomeDecorator;
+import com.legendgamer.realism.world.biome.primary.MetamorphicBiome.Type;
+import com.legendgamer.realism.world.gen.feature.SwampBiomeDecorator;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -32,10 +34,14 @@ public class SedimentaryBiome extends BiomeBase {
 		this.sandBlock = BlocksList.SEDIMENTARY_SAND.getDefaultState();
 		this.gravelBlock = BlocksList.SEDIMENTARY_GRAVEL.getDefaultState();
 	}
-
+	public SwampBiomeDecorator swp = new SwampBiomeDecorator();
 	@Override
 	public void decorate(World world, Random rand, BlockPos pos)
 	{
+		if(this.type == Type.SWAMP) {
+		
+			swp.generate(world, rand, pos);
+		}
 		 this.bd.decorate(world, rand, this, pos);
 	}
 	@Override

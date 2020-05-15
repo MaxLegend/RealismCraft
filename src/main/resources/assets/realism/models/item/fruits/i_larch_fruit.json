@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "realism:items/fruits/i_larch_fruit"
+  }
+}

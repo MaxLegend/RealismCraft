@@ -1,0 +1,54 @@
+{
+	"parent": "block/cube_all",
+	"credit": "Made special for SovietLab",
+	"textures": {
+		"0": "realism:blocks/tree/ash/ash_top_2",
+		"1": "realism:blocks/tree/ash/ash_side",
+		"particle": "realism:blocks/tree/ash/ash_top_2"
+	},
+	"elements": [
+		{
+			"from": [5, 4, 0],
+			"to": [11, 12, 16],
+			"faces": {
+				"north": {"uv": [4, 5, 12, 11], "rotation": 90, "texture": "#0"},
+				"east": {"uv": [0, 0, 16, 8], "rotation": 180, "texture": "#1"},
+				"south": {"uv": [4, 5, 12, 11], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 8], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 6], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 6], "rotation": 270, "texture": "#1"}
+			}
+		},
+		{
+			"from": [11, 5, 0],
+			"to": [12, 11, 16],
+			"faces": {
+				"north": {"uv": [3, 12, 9, 13], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 6], "rotation": 180, "texture": "#1"},
+				"south": {"uv": [1, 2, 7, 3], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 6], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 1], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 1], "rotation": 270, "texture": "#1"}
+			}
+		},
+		{
+			"from": [4, 5, 0],
+			"to": [5, 11, 16],
+			"faces": {
+				"north": {"uv": [4, 3, 10, 4], "rotation": 90, "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 6], "rotation": 180, "texture": "#1"},
+				"south": {"uv": [6, 1, 12, 2], "rotation": 270, "texture": "#0"},
+				"west": {"uv": [0, 0, 16, 6], "texture": "#1"},
+				"up": {"uv": [0, 0, 16, 1], "rotation": 270, "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 1], "rotation": 270, "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [8, 8, 8],
+			"children": [0, 1, 2]
+		}
+	]
+}

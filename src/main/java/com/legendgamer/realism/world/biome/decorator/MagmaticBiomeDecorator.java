@@ -2,12 +2,17 @@ package com.legendgamer.realism.world.biome.decorator;
 
 import java.util.Random;
 
+import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
 import com.legendgamer.realism.config.ConfigManager;
 import com.legendgamer.realism.reg.BlocksList;
 import com.legendgamer.realism.reg.RegBiomes;
 import com.legendgamer.realism.world.gen.feature.WorldGenRealismOre;
+import com.legendgamer.realism.world.gen.trees.coniferous.GenLarchTree;
+import com.legendgamer.realism.world.gen.trees.coniferous.GenPineTree;
+import com.legendgamer.realism.world.gen.trees.coniferous.GenSpruceTree;
 
 import io.netty.util.internal.ThreadLocalRandom;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -48,9 +53,14 @@ public class MagmaticBiomeDecorator extends BiomeDecorator {
 		this.nickel_gen = new WorldGenRealismOre(BlocksList.MAGMATIC_NICKEL.getDefaultState(), nickelsize, BlocksList.MAGMATIC_STONE);
 		this.chrome_gen = new WorldGenRealismOre(BlocksList.MAGMATIC_CHROME.getDefaultState(), chromesize, BlocksList.MAGMATIC_STONE);
 		this.vanadium_gen = new WorldGenRealismOre(BlocksList.MAGMATIC_VANADIUM.getDefaultState(), vanadiumsize, BlocksList.MAGMATIC_STONE);
-
+		if(biome == RegBiomes.MAGMATIC_FOREST) {
+			this.generateTree(world, random, pos);	
+		}
 	}
-
+	
+	public WorldGenerator genTreePine = new GenPineTree();
+	public WorldGenerator genTreeSpruce = new GenSpruceTree();
+	public WorldGenerator genTreeLarch = new GenLarchTree();
 
 	@Override
 	protected void genDecorations(Biome biome, World world, Random random)
@@ -64,8 +74,49 @@ public class MagmaticBiomeDecorator extends BiomeDecorator {
 		
 	}
 	
-	public void generateTree(World world, Random random) {
-	//	new SpruceTreeGenerator(BlocksList.REAL_SPRUCE, BlocksList.REAL_SPRUCE_BRANCH, BlocksList.REAL_SPRUCE_LEAVES).generate(world, random, this.chunkPos);
+	public void generateTree(World world, Random r, BlockPos p) {
+		ThreadLocalRandom rt = ThreadLocalRandom.current();
+		for (int i = 0; i < 4; ++i)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				if(rt.nextInt(9) == 4) {
+				//	int k = i * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
+				//	int l = j * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
+					int l = j * 4 + 4 + r.nextInt(8);
+					int k = i * 4 + 4  + r.nextInt(8) ;
+					BlockPos blockpos = world.getHeight(p.add(k, 0, l));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(blockpos.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(blockpos.offset(f).offset(f)) instanceof BlockRealTrees)&& !(world.getBlockState(blockpos.offset(f).offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreePine.generate(world, r, blockpos);
+						}
+					}
+				}
+				if(rt.nextInt(9) == 4) {
+					int l2 = j * 4  + r.nextInt(8) ;
+					int k2 = i* 4   + r.nextInt(8) ;
+					BlockPos blockpos2 = world.getHeight(p.add(k2, 0, l2));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(p.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(p.offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeSpruce.generate(world, r, blockpos2);
+						} 
+					}
+				}
+				if(rt.nextInt(9) == 4) {
+					int l3 = j * 4  + r.nextInt(8) ;
+					int k3 = i* 4   + r.nextInt(8) ;
+					BlockPos blockpos3 = world.getHeight(p.add(k3, 0, l3));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(p.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(p.offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeLarch.generate(world, r, blockpos3);
+
+						} 
+					}
+				}
+			}
+		}
+
+	
 	}
 	@Override
 	protected void generateOres(World worldIn, Random random)

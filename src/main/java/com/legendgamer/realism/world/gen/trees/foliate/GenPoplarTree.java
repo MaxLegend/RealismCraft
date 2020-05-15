@@ -2,10 +2,10 @@ package com.legendgamer.realism.world.gen.trees.foliate;
 
 import java.util.Random;
 
-import com.legendgamer.realism.blocks.BlockDirt;
-import com.legendgamer.realism.blocks.GrassSided;
 import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
 import com.legendgamer.realism.blocks.tree.frame.BlockThickBranch;
+import com.legendgamer.realism.blocks.worldblock.BlockDirt;
+import com.legendgamer.realism.blocks.worldblock.GrassSided;
 import com.legendgamer.realism.reg.BlocksList;
 
 import io.netty.util.internal.ThreadLocalRandom;
@@ -21,14 +21,14 @@ public class GenPoplarTree  extends WorldGenerator {
 
 	private final  IBlockState LOG = BlocksList.REAL_POPLAR.getDefaultState().withProperty(BlockRealTrees.STAGE, 6);
 	private  IBlockState THICK_BRANCH ;
-	private final  IBlockState BRANCH = BlocksList.REAL_POPLAR_BRANCH.getDefaultState();
+	
 	private final  IBlockState LEAVES = BlocksList.REAL_POPLAR_LEAVES.getDefaultState();
 
 	public boolean generateTree(World w, BlockPos pos) {
 
 		
 		ThreadLocalRandom tr = ThreadLocalRandom.current();
-		int heightTree = ThreadLocalRandom.current().nextInt(13, 18);
+		int heightTree = ThreadLocalRandom.current().nextInt(14, 19);
 		boolean checkOppGrowth = true;
 		THICK_BRANCH = BlocksList.REAL_TB_POPLAR.getDefaultState();
 		if (pos.getY() >= 1 && pos.getY() + heightTree + 1 <= 256) {
@@ -118,18 +118,18 @@ public class GenPoplarTree  extends WorldGenerator {
 					}
 
 					//крона представляет собой как бы конус
-					for (int heightFoliageGrowth = pos.getY() -5 + heightTree; heightFoliageGrowth <= pos.getY() + heightTree; ++heightFoliageGrowth)
+					for (int heightFoliageGrowth = pos.getY() -11 + heightTree; heightFoliageGrowth <= pos.getY() + heightTree; ++heightFoliageGrowth)
 					{
-						int k2 = heightFoliageGrowth - (pos.getY() + heightTree);// Стартовый размер каждого слоя кроны(радиус каждого слоя конуса)
-						int l2 = 2 - k2 / 6;// Радиус нижнего слоя конуса
+						int k2 = heightFoliageGrowth - (pos.getY() + heightTree - 5);// Стартовый размер каждого слоя кроны(радиус каждого слоя конуса)
+						int l2 = 1- k2 / 8;// Радиус нижнего слоя конуса
 
 						for (int sizeLeavesX = pos.getX() - l2; sizeLeavesX <= pos.getX() + l2; ++sizeLeavesX)
 						{
-							int j1 = sizeLeavesX*2 - pos.getX();
+							int j1 = sizeLeavesX - pos.getX();
 
 							for (int sizeLeavesZ = pos.getZ() - l2; sizeLeavesZ <= pos.getZ() + l2; ++sizeLeavesZ)
 							{
-								int l1 = sizeLeavesZ*2 - pos.getZ();
+								int l1 = sizeLeavesZ - pos.getZ();
 
 								if (Math.abs(j1) != l2 || Math.abs(l1) != l2 || ThreadLocalRandom.current().nextInt(2) != 0 && k2 != 0)
 								{

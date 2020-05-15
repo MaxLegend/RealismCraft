@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "stage=0":  { "model": "realism:tree/fruit_leaves/oak/stage_0" },
+   	"stage=1":  { "model": "realism:tree/fruit_leaves/oak/stage_1" },
+	"stage=2":  { "model": "realism:tree/fruit_leaves/oak/stage_2" }
+
+    }
+}

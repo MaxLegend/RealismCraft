@@ -2,6 +2,7 @@ package com.legendgamer.realism.proxy;
 
 import javax.annotation.Nullable;
 
+import com.legendgamer.realism.Realism;
 import com.legendgamer.realism.reg.BlocksList;
 import com.legendgamer.realism.reg.RegBlocks;
 import com.legendgamer.realism.reg.RegEvents;
@@ -16,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ColorizerGrass;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeColorHelper;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,7 +29,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 		RegFluids.registerRender();
-		
+	//	  OBJLoader.INSTANCE.addDomain(Realism.MODID);
 
 		MinecraftForge.EVENT_BUS.register(new RegRenderMetaBlocks());
 	}
@@ -53,9 +55,9 @@ public class ClientProxy extends CommonProxy {
 		},BlocksList.FERN, 
 		BlocksList.WIPE, 
 		BlocksList.SEDGE, 
-		BlocksList.MAGMATIC_GRASS,
-		BlocksList.METAMORPHIC_GRASS,
-		BlocksList.SEDIMENTARY_GRASS,
+		BlocksList.MAGMATIC_GRASS,BlocksList.MAGMATIC_SWAMP_GRASS,
+		BlocksList.METAMORPHIC_GRASS,BlocksList.METAMORPHIC_SWAMP_GRASS,
+		BlocksList.SEDIMENTARY_GRASS,BlocksList.SEDIMENTARY_SWAMP_GRASS,
 		BlocksList.REAL_ASH_LEAVES,BlocksList.REAL_ASH_SAPLING
 		,BlocksList.REAL_BIRCH_LEAVES,BlocksList.REAL_BIRCH_SAPLING
 		,BlocksList.REAL_LARCH_LEAVES,BlocksList.REAL_LARCH_SAPLING
@@ -64,7 +66,8 @@ public class ClientProxy extends CommonProxy {
 		,BlocksList.REAL_LINDEN_LEAVES,BlocksList.REAL_LINDEN_SAPLING
 		,BlocksList.REAL_PEAR_LEAVES,BlocksList.REAL_PEAR_SAPLING
 		,BlocksList.REAL_SPRUCE_LEAVES,BlocksList.REAL_SPRUCE_SAPLING
-		,BlocksList.REAL_POPLAR_LEAVES,BlocksList.REAL_POPLAR_SAPLING
+		,BlocksList.REAL_POPLAR_LEAVES,BlocksList.REAL_POPLAR_SAPLING,
+		BlocksList.OAK_FRUIT,BlocksList.ASH_FRUIT,BlocksList.LINDEN_FRUIT,BlocksList.BIRCH_FRUIT,BlocksList.PEAR_FRUIT,BlocksList.LARCH_FRUIT,BlocksList.PINE_FRUIT,BlocksList.POPLAR_FRUIT,BlocksList.SPRUCE_FRUIT
 				);
 		
 		super.init(event);

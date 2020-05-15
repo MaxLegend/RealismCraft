@@ -34,7 +34,7 @@ public class RiverBiome extends BiomeBase {
 
 
 	public static enum Type {
-		RIVER(0x0066cc);
+		RIVER(0x228B22);
 
 		final int color;
 

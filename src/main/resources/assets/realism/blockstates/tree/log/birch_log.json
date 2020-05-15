@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":  { "model": "realism:tree/log/birch_log", "x": 90 },
+        "axis=z":   { "model": "realism:tree/log/birch_log" },
+        "axis=x":   { "model": "realism:tree/log/birch_log", "y": 90 },
+        "axis=none": { "model": "realism:tree/log/birch_log" }
+    }
+}

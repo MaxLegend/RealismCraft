@@ -1,0 +1,33 @@
+{
+"parent": "block/block",
+    "textures": {
+        "particle": "realism:blocks/magmatic/magmatic_dirt_sw",
+        "texture": "realism:blocks/magmatic/magmatic_dirt_sw",
+	"texture_side": "realism:blocks/magmatic/magmatic_dirt_sw",
+	"texture_top": "realism:blocks/magmatic/grass/default_top_sw",
+	"texture_overlay": "realism:blocks/magmatic/grass/default_side_overlay_sw"
+    },
+  "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side"},
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side"},
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side"},
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side" }
+            }
+        },
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_top",      "tintindex": 1},
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_overlay", "tintindex": 1 },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_overlay", "tintindex": 1},
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_overlay", "tintindex": 1},
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_overlay", "tintindex": 1}
+            }
+        }
+    ]
+}

@@ -7,7 +7,8 @@ import com.legendgamer.realism.reg.BlocksList;
 import com.legendgamer.realism.world.biome.base.BiomeBase;
 import com.legendgamer.realism.world.biome.base.EnumBiomes;
 import com.legendgamer.realism.world.biome.decorator.MagmaticBiomeDecorator;
-import com.legendgamer.realism.world.gen.feature.SwampBiomeDecorator;
+import com.legendgamer.realism.world.biome.decorator.SwampBiomeDecorator;
+import com.legendgamer.realism.world.biome.primary.MetamorphicBiome.Type;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -24,9 +25,16 @@ public class MagmaticBiome extends BiomeBase{
 	public MagmaticBiome(Biome.BiomeProperties properties, EnumBiomes eBiome, Type type) {
 		super(properties, eBiome);
 		this.type = type;
+		if(type == Type.SWAMP) {
+			this.topBlock = BlocksList.MAGMATIC_SWAMP_GRASS.getDefaultState();
+			this.fillerBlock = BlocksList.MAGMATIC_SWAMP_DIRT.getDefaultState();
+			this.color = 0x445429;
+		} else {
+			this.topBlock = BlocksList.MAGMATIC_GRASS.getDefaultState();
+			this.fillerBlock = BlocksList.MAGMATIC_DIRT.getDefaultState();
+			this.color = 0x6B8E23;
+		}
 
-		this.topBlock = BlocksList.MAGMATIC_GRASS.getDefaultState();
-		this.fillerBlock = BlocksList.MAGMATIC_DIRT.getDefaultState();
 
 		this.clayBlock = BlocksList.MAGMATIC_CLAY.getDefaultState();
 		this.claystoneBlock = BlocksList.MAGMATIC_CLAYSTONE.getDefaultState(); 
@@ -65,7 +73,7 @@ public class MagmaticBiome extends BiomeBase{
 
 	//0x308f0d
 	public static enum Type {
-		HILLS(), PLAINS(), LAKE(), SWAMP(), FOREST();
+		HILLS(), PLAINS(), LAKE(), SWAMP(), FOREST(), EDGE();
 
 
 	}

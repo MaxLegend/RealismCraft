@@ -1,13 +1,17 @@
 package com.legendgamer.realism.world.biome.base;
 
+import java.util.List;
 import java.util.Random;
 
+import com.google.common.collect.Lists;
 import com.legendgamer.realism.capability.world_cap.DateProvider;
 import com.legendgamer.realism.capability.world_cap.IDate;
+import com.legendgamer.realism.reg.BlocksList;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -71,7 +75,22 @@ public class BiomeBase extends Biome  {
 		return this;
 	
 	}
-
+	 public List<Biome.SpawnListEntry> getSpawnableList(EnumCreatureType creatureType)
+	    {
+	        switch (creatureType)
+	        {
+	            case CREATURE:
+	                return this.spawnableCreatureList;
+	            case WATER_CREATURE:
+	                return this.spawnableWaterCreatureList;
+	            case AMBIENT:
+	                return this.spawnableCaveCreatureList;
+	            default:
+	                // Forge: Return a non-empty list for non-vanilla EnumCreatureTypes
+	                if (!this.modSpawnableLists.containsKey(creatureType)) this.modSpawnableLists.put(creatureType, Lists.<Biome.SpawnListEntry>newArrayList());
+	                return this.modSpawnableLists.get(creatureType);
+	        }
+	    }
 	public int getColorBySeasonFoliage(BlockPos pos) {
 		World world = Minecraft.getMinecraft().world;
 		IDate date = world.getCapability(DateProvider.DATE, null);
@@ -118,17 +137,16 @@ public class BiomeBase extends Biome  {
 	}
 		
 	}
-
+	public int color;
 	@Override
 	public int getGrassColorAtPos(BlockPos pos) {
-		
-		return 0x6B8E23;
+		return color;
 	}
 
 	@Override
 	public int getFoliageColorAtPos(BlockPos pos) {
-		
-		return 0x6B8E23;
+		//0x6B8E23
+		return color;
 	}
 
 	@Override
@@ -136,6 +154,8 @@ public class BiomeBase extends Biome  {
 	{
 		int i = w.getSeaLevel();
 		int actHeight = w.getHeight(x, z);
+		IBlockState graniteBlock = BlocksList.BASE_GRANITE.getDefaultState();
+		IBlockState dStoneBlock = BlocksList.MAGMATIC_STONE.getDefaultState();
 		IBlockState topBlock = this.topBlock;
 		IBlockState fillerBlock = this.fillerBlock;
 		IBlockState clayBlock = this.clayBlock;
@@ -153,10 +173,24 @@ public class BiomeBase extends Biome  {
 		for (int j1 = 0; j1 <= 255; ++j1)
 		{
 			//Ќа высоте от 0 до 5 замен€етс€ на блоки бедрока
-			if (j1 <= rand.nextInt(5))
+			if (j1 <= rand.nextInt(4))
 			{
 				setBIC.setBlockState(chunkX, j1, chunkZ, BEDROCK);
+			} else
+				if (j1 > 5 && j1 <= 12 + rand.nextInt(3) )
+				{
+					setBIC.setBlockState(chunkX, j1, chunkZ, Blocks.LAVA.getDefaultState());
+				}  
+			else
+			if (j1 > 12 && j1 <= 60 + rand.nextInt(5) )
+			{
+				setBIC.setBlockState(chunkX, j1, chunkZ, graniteBlock);
 			} 
+			else
+				if (j1 > 60 && j1 <= 85 + rand.nextInt(5) )
+				{
+					setBIC.setBlockState(chunkX, j1, chunkZ, dStoneBlock);
+				}
 			else {
 				//ѕолучаем блок чанка на координатах
 				IBlockState chunkBlock = setBIC.getBlockState(chunkX, j1, chunkZ);

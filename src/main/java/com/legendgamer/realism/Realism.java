@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.legendgamer.realism.command.RealismCommand;
+import com.legendgamer.realism.creativetabs.TabFruits;
 import com.legendgamer.realism.creativetabs.TabOres;
 import com.legendgamer.realism.creativetabs.TabRock;
 import com.legendgamer.realism.creativetabs.TabTrees;
@@ -34,6 +35,7 @@ public class Realism {
 	public static CreativeTabs tabOres = new TabOres("tabOres");
 	//public static CreativeTabs tabTool = new TabRocks("tabTool");
 	public static CreativeTabs tabTrees = new TabTrees("tabTrees");
+	public static CreativeTabs tabFruits = new TabFruits("tabFruits");
 	@Mod.Instance
 	public static Realism INSTANCE;
 	public static final ResourceLocation DATE = new ResourceLocation("seasons","date");

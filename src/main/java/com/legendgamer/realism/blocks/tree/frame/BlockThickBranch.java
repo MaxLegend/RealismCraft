@@ -1,10 +1,16 @@
 package com.legendgamer.realism.blocks.tree.frame;
 
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
+import org.apache.commons.lang3.tuple.Pair;
+
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
-import com.legendgamer.realism.API.BasicBlock.BasicLogBlockTile.EnumAxis;
-import com.legendgamer.realism.blocks.tree.util.EnumTreeType;
-import com.legendgamer.realism.blocks.tree.util.ITreeType;
+import com.legendgamer.realism.capability.world_cap.DateProvider;
+import com.legendgamer.realism.capability.world_cap.IDate;
 import com.legendgamer.realism.reg.BlocksList;
 
 import net.minecraft.block.Block;
@@ -19,7 +25,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.EnumHand;
@@ -31,13 +36,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
-public class BlockThickBranch extends BasicBlock implements ITreeType{
+public class BlockThickBranch extends BasicBlock  {
 
 	/*
 	 * Чтобы каждый раз не создавть - объявляем нашу мапу где первый аргумент типа (Integer - номер метадаты),
@@ -69,10 +69,14 @@ public class BlockThickBranch extends BasicBlock implements ITreeType{
 			new AxisAlignedBB(0D, 0.0D, 0D, 1D, 1D, 1D),
 	};
 
-	public EnumTreeType type;
+	protected Block leaves;
+	
+	protected Block tn;
+	protected int tickUpdate;
+	
 	public BlockThickBranch(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype, CreativeTabs tab) {
 		super(materialIn, name, hardness, resistanse, soundtype, tab);
-		
+	
 		/*
 		 * Инициализируем нашу мапу. i - значение поворота 0 - 1
 		 */
@@ -94,10 +98,11 @@ public class BlockThickBranch extends BasicBlock implements ITreeType{
 
 		setDefaultState(blockState.getBaseState().withProperty(STAGE, 0).withProperty(AXIS, EnumAxis.X).withProperty(IS_HORIZONTAL, false).withProperty(IS_VERTICAL, false));
 	}
-	@Override
-	public Block setType(EnumTreeType type) {
-		this.type = type;
-		return this;
+	public Block getTB() {
+		return tn;
+	}
+	public Block getTN() {
+		return tn;
 	}
 	private boolean canConnectTo(IBlockAccess world, BlockPos pos, EnumFacing facing)
 	{
@@ -106,14 +111,12 @@ public class BlockThickBranch extends BasicBlock implements ITreeType{
 
 		Block connector_branch = world.getBlockState(pos.offset(facing)).getBlock();
 		if(state1.getBlock() instanceof BlockThickBranch && state.getBlock() instanceof BlockThickBranch) {
-			if(state1.getValue(AXIS) != state.getValue(AXIS) && connector_branch instanceof BlockThickBranch) {
+			if(state1.getValue(AXIS) != state.getValue(AXIS) && connector_branch == getTB() ) {
 				return true;
 			}
 		} 
 
-		if( connector_branch instanceof BlockTreeNewBranch || connector_branch instanceof BlockRealLeaves) {
-
-
+		if( connector_branch == getTN() || connector_branch == getLeaves()) {
 			return true;
 		} else return false;
 	}
@@ -257,35 +260,31 @@ public class BlockThickBranch extends BasicBlock implements ITreeType{
 		}
 		return false;
 	}
-
+	public int getFrequencyTick() {
+		return tickUpdate;
+	}
 	@Override
 	public void randomTick(World w, BlockPos pos, IBlockState state, Random r)
 	{
-
-        for(EnumFacing f : EnumFacing.VALUES) {
-        	if(w.isAirBlock(pos.offset(f))) {
-        		if(r.nextInt(5) == f.getIndex()) {
-        	
-        		}
-        	}
-        }
-   
-
+		IDate date = w.getCapability(DateProvider.DATE, null);
+		if(w.getWorldTime() % getFrequencyTick() == 0) {
+			this.lifeActivity(w, pos, state, date, ThreadLocalRandom.current());
+		}
 	}
-    public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
-    {
-        return true;
-    }
+	public boolean canSustainLeaves(IBlockState state, IBlockAccess world, BlockPos pos)
+	{
+		return true;
+	}
 	public void neighborChanged(IBlockState state, World w, BlockPos pos, Block blockIn, BlockPos fromPos)
 	{
 
-	
-	    
 	}
-    public void onBlockDestroyedByPlayer(World w, BlockPos pos, IBlockState state)
-    {
-//	state.getBlock().breakBlock(w,  pos,  state);
-    }
+	public void lifeActivity(World w, BlockPos p, IBlockState s, IDate date, ThreadLocalRandom tr) {
+	}
+	public void onBlockDestroyedByPlayer(World w, BlockPos pos, IBlockState state)
+	{
+		//	state.getBlock().breakBlock(w,  pos,  state);
+	}
 	public void breakBlock(World w, BlockPos pos, IBlockState state)
 	{
 		boolean isLeaves = true;
@@ -304,12 +303,17 @@ public class BlockThickBranch extends BasicBlock implements ITreeType{
 	}
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
 	{
-		for(EnumFacing f : EnumFacing.VALUES) {
-			if(world.isAirBlock(pos.offset(f))) {
-				System.out.println("type " + this.getType().getTrunkFromType());
-			//	world.setBlockState(pos.offset(f), this.getType().getLeavesFromType().getDefaultState());
+		if(world.getBlockState(pos).getBlock() != BlocksList.REAL_TB_PINE) {
+			for(EnumFacing f : EnumFacing.VALUES) {
+				if(world.isAirBlock(pos.offset(f))) {
+
+					world.setBlockState(pos.offset(f), getLeaves().getDefaultState());
+				}
 			}
 		}
+	}
+	public Block getLeaves() {
+		return leaves;
 	}
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[]{STAGE, AXIS, IS_HORIZONTAL, IS_VERTICAL});
@@ -346,10 +350,6 @@ public class BlockThickBranch extends BasicBlock implements ITreeType{
 
 	}
 
-	@Override
-	public EnumTreeType getType() {
-	
-		return type;
-	}
+
 }
 

@@ -2,10 +2,10 @@ package com.legendgamer.realism.world.gen.trees.foliate;
 
 import java.util.Random;
 
-import com.legendgamer.realism.blocks.BlockDirt;
-import com.legendgamer.realism.blocks.GrassSided;
 import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
 import com.legendgamer.realism.blocks.tree.frame.BlockThickBranch;
+import com.legendgamer.realism.blocks.worldblock.BlockDirt;
+import com.legendgamer.realism.blocks.worldblock.GrassSided;
 import com.legendgamer.realism.reg.BlocksList;
 
 import io.netty.util.internal.ThreadLocalRandom;
@@ -21,7 +21,7 @@ public class GenAshTree  extends WorldGenerator {
 
 	private final  IBlockState LOG = BlocksList.REAL_ASH.getDefaultState().withProperty(BlockRealTrees.STAGE, 6);
 	private  IBlockState THICK_BRANCH ;
-	private final  IBlockState BRANCH = BlocksList.REAL_ASH_BRANCH.getDefaultState();
+	
 	private final  IBlockState LEAVES = BlocksList.REAL_ASH_LEAVES.getDefaultState();
 
 	public boolean generateTree(World w, BlockPos pos) {

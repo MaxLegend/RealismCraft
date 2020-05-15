@@ -29,7 +29,11 @@ public class RealismWorldProvider extends WorldProvider {
 	public DimensionType getDimensionType() {
 		return RegDim.REALISM_DIM;
 	}
-
+	@Override
+    public int getHeight()
+    {
+        return 450;
+    }
 	@Override
 	public boolean canRespawnHere() {
 		return false;

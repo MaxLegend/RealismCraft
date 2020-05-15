@@ -12,6 +12,10 @@ public class RealMapGenCaves extends MapGenCaves {
 	@Override
 	 protected boolean canReplaceBlock(IBlockState state, IBlockState p_175793_2_)
 	    {
+	      if (state.getBlock() == BlocksList.BASE_GRANITE)
+	        {
+	            return true;
+	        }
         if (state.getBlock() == BlocksList.MAGMATIC_CLAY)
         {
             return true;

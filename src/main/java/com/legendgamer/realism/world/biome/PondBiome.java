@@ -17,7 +17,7 @@ public class PondBiome extends BiomeBase {
 		super(properties, eBiome);
 		this.type = type;
 		   this.spawnableCreatureList.clear();
-			this.topBlock = BlocksList.SEDIMENTARY_GRASS.getDefaultState();
+			this.topBlock = BlocksList.SEDIMENTARY_GRAVEL.getDefaultState();
 			this.fillerBlock = BlocksList.SEDIMENTARY_GRAVEL.getDefaultState();
 			this.clayBlock = BlocksList.SEDIMENTARY_GRAVEL.getDefaultState();
 			this.claystoneBlock = BlocksList.SEDIMENTARY_GRAVEL.getDefaultState();
@@ -29,7 +29,7 @@ public class PondBiome extends BiomeBase {
 
 
 	public static enum Type {
-		OCEAN(), DEEP_OCEAN(), SMALL_OCEAN(), SEA();
+		OCEAN(), DEEP_OCEAN(), SMALL_OCEAN(), SEA(), LAKE();
 
 
 	}

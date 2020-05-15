@@ -1,7 +1,5 @@
 package com.legendgamer.realism.reg;
 
-import com.legendgamer.realism.blocks.tree.util.EnumTreeType;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -41,74 +39,69 @@ public class RegBlocks {
 		registerBlock(BlocksList.SALTY_WATER);
 		registerBlock(BlocksList.SWAMP_WATER);
 
-		
-		//ash
+
 		registerBlock(BlocksList.REAL_ASH);
+		registerBlock(BlocksList.REAL_OAK);
+		registerBlock(BlocksList.REAL_BIRCH);
+		registerBlock(BlocksList.REAL_LINDEN);
+		registerBlock(BlocksList.REAL_PINE);
+		registerBlock(BlocksList.REAL_SPRUCE);
+		registerBlock(BlocksList.REAL_POPLAR);
+		registerBlock(BlocksList.REAL_PEAR);
+		registerBlock(BlocksList.REAL_LARCH);
 		
 		registerBlock(BlocksList.REAL_TB_ASH);
-		registerBlock(BlocksList.REAL_ASH_BRANCH);
-		registerBlock(BlocksList.REAL_ASH_LEAVES);
-		registerBlock(BlocksList.REAL_ASH_SAPLING);
-		
-		//oak
-		registerBlock(BlocksList.REAL_OAK);
 		registerBlock(BlocksList.REAL_TB_OAK);
-		registerBlock(BlocksList.REAL_OAK_BRANCH);
-		registerBlock(BlocksList.REAL_OAK_LEAVES);
-		registerBlock(BlocksList.REAL_OAK_SAPLING);
-		
-		//birch
-		registerBlock(BlocksList.REAL_BIRCH);
 		registerBlock(BlocksList.REAL_TB_BIRCH);
-		registerBlock(BlocksList.REAL_BIRCH_BRANCH);
-		registerBlock(BlocksList.REAL_BIRCH_LEAVES);
-		registerBlock(BlocksList.REAL_BIRCH_SAPLING);
-		
-		//linden
-		registerBlock(BlocksList.REAL_LINDEN);
 		registerBlock(BlocksList.REAL_TB_LINDEN);
-		registerBlock(BlocksList.REAL_LINDEN_BRANCH);
-		registerBlock(BlocksList.REAL_LINDEN_LEAVES);
-		registerBlock(BlocksList.REAL_LINDEN_SAPLING);
-		
-		//pine
-		registerBlock(BlocksList.REAL_PINE);
 		registerBlock(BlocksList.REAL_TB_PINE);
-		registerBlock(BlocksList.REAL_PINE_BRANCH);
-		registerBlock(BlocksList.REAL_PINE_LEAVES);
-		registerBlock(BlocksList.REAL_PINE_SAPLING);
-		
-		//spruce
-		registerBlock(BlocksList.REAL_SPRUCE);
 		registerBlock(BlocksList.REAL_TB_SPRUCE);
-		registerBlock(BlocksList.REAL_SPRUCE_BRANCH);
-		registerBlock(BlocksList.REAL_SPRUCE_LEAVES);
-		registerBlock(BlocksList.REAL_SPRUCE_SAPLING);
-		
-		//poplar
-		registerBlock(BlocksList.REAL_POPLAR);
 		registerBlock(BlocksList.REAL_TB_POPLAR);
-		registerBlock(BlocksList.REAL_POPLAR_BRANCH);
-		registerBlock(BlocksList.REAL_POPLAR_LEAVES);
-		registerBlock(BlocksList.REAL_POPLAR_SAPLING);
-		
-		//pear
-		registerBlock(BlocksList.REAL_PEAR);
 		registerBlock(BlocksList.REAL_TB_PEAR);
-		registerBlock(BlocksList.REAL_PEAR_BRANCH);
-		registerBlock(BlocksList.REAL_PEAR_LEAVES);
-		registerBlock(BlocksList.REAL_PEAR_SAPLING);
-		
-		//larch
-		registerBlock(BlocksList.REAL_LARCH);
 		registerBlock(BlocksList.REAL_TB_LARCH);
+		
+		registerBlock(BlocksList.REAL_ASH_BRANCH);
+		registerBlock(BlocksList.REAL_BIRCH_BRANCH);
 		registerBlock(BlocksList.REAL_LARCH_BRANCH);
+		registerBlock(BlocksList.REAL_LINDEN_BRANCH);
+		registerBlock(BlocksList.REAL_OAK_BRANCH);
+		registerBlock(BlocksList.REAL_PEAR_BRANCH);
+		registerBlock(BlocksList.REAL_PINE_BRANCH);
+		registerBlock(BlocksList.REAL_POPLAR_BRANCH);
+		registerBlock(BlocksList.REAL_SPRUCE_BRANCH);
+		
+		registerBlock(BlocksList.ASH_FRUIT);
+		registerBlock(BlocksList.OAK_FRUIT);
+		registerBlock(BlocksList.BIRCH_FRUIT);
+		registerBlock(BlocksList.LINDEN_FRUIT);
+		registerBlock(BlocksList.PINE_FRUIT);
+		registerBlock(BlocksList.SPRUCE_FRUIT);
+		registerBlock(BlocksList.POPLAR_FRUIT);
+		registerBlock(BlocksList.PEAR_FRUIT);
+		registerBlock(BlocksList.LARCH_FRUIT);
+
+		registerBlock(BlocksList.REAL_SPRUCE_LEAVES);
+		registerBlock(BlocksList.REAL_PINE_LEAVES);
+		registerBlock(BlocksList.REAL_LINDEN_LEAVES);
+		registerBlock(BlocksList.REAL_BIRCH_LEAVES);
+		registerBlock(BlocksList.REAL_OAK_LEAVES);
+		registerBlock(BlocksList.REAL_ASH_LEAVES);
+		registerBlock(BlocksList.REAL_POPLAR_LEAVES);
 		registerBlock(BlocksList.REAL_LARCH_LEAVES);
+		registerBlock(BlocksList.REAL_PEAR_LEAVES);
+		
+		registerBlock(BlocksList.REAL_ASH_SAPLING);
+		registerBlock(BlocksList.REAL_OAK_SAPLING);
+		registerBlock(BlocksList.REAL_BIRCH_SAPLING);
+		registerBlock(BlocksList.REAL_LINDEN_SAPLING);
+		registerBlock(BlocksList.REAL_PINE_SAPLING);
+		registerBlock(BlocksList.REAL_SPRUCE_SAPLING);
+		registerBlock(BlocksList.REAL_POPLAR_SAPLING);
+		registerBlock(BlocksList.REAL_PEAR_SAPLING);
 		registerBlock(BlocksList.REAL_LARCH_SAPLING);
-
-
+		
+		
 		registerBlock(BlocksList.METAMORPHIC_SAND);
-
 		registerBlock(BlocksList.METAMORPHIC_GRAVEL);
 
 		registerBlock(BlocksList.METAMORPHIC_STONE);
@@ -149,14 +142,77 @@ public class RegBlocks {
 		registerBlock(BlocksList.FERN);
 		registerBlock(BlocksList.SEDGE);
 		registerBlock(BlocksList.WIPE);
-
+		
+		//base
+		registerBlock(BlocksList.BASE_GRANITE);
+		
+		//double thin log
+		registerBlock(BlocksList.ASH_LOG_TD);
+		
+		//thin log
+		registerBlock(BlocksList.ASH_LOG_T);
+		
+		//log
+		registerBlock(BlocksList.ASH_LOG);
+		registerBlock(BlocksList.BIRCH_LOG);
+		registerBlock(BlocksList.OAK_LOG);
+		registerBlock(BlocksList.LINDEN_LOG);
+		registerBlock(BlocksList.PEAR_LOG);
+		registerBlock(BlocksList.POPLAR_LOG);
+		registerBlock(BlocksList.PINE_LOG);
+		registerBlock(BlocksList.SPRUCE_LOG);
+		registerBlock(BlocksList.LARCH_LOG);
+		//stripped log
+		registerBlock(BlocksList.ASH_LOG_STR);
+		registerBlock(BlocksList.BIRCH_LOG_STR);
+		registerBlock(BlocksList.OAK_LOG_STR);
+		registerBlock(BlocksList.LINDEN_LOG_STR);
+		registerBlock(BlocksList.PEAR_LOG_STR);
+		registerBlock(BlocksList.POPLAR_LOG_STR);
+		registerBlock(BlocksList.PINE_LOG_STR);
+		registerBlock(BlocksList.SPRUCE_LOG_STR);
+		registerBlock(BlocksList.LARCH_LOG_STR);
 	}
 	public static void registerRender() {
+		
+		//double thin log
+		registerRenderBlock(BlocksList.ASH_LOG_TD);
+		
+		//thin log
+		registerRenderBlock(BlocksList.ASH_LOG_T);
+		
+		//log
+		registerRenderBlock(BlocksList.ASH_LOG);
+		registerRenderBlock(BlocksList.BIRCH_LOG);
+		registerRenderBlock(BlocksList.OAK_LOG);
+		registerRenderBlock(BlocksList.LINDEN_LOG);
+		registerRenderBlock(BlocksList.PEAR_LOG);
+		registerRenderBlock(BlocksList.POPLAR_LOG);
+		registerRenderBlock(BlocksList.PINE_LOG);
+		registerRenderBlock(BlocksList.SPRUCE_LOG);
+		registerRenderBlock(BlocksList.LARCH_LOG);
+		//stripped log
+		registerRenderBlock(BlocksList.ASH_LOG_STR);
+		registerRenderBlock(BlocksList.BIRCH_LOG_STR);
+		registerRenderBlock(BlocksList.OAK_LOG_STR);
+		registerRenderBlock(BlocksList.LINDEN_LOG_STR);
+		registerRenderBlock(BlocksList.PEAR_LOG_STR);
+		registerRenderBlock(BlocksList.POPLAR_LOG_STR);
+		registerRenderBlock(BlocksList.PINE_LOG_STR);
+		registerRenderBlock(BlocksList.SPRUCE_LOG_STR);
+		registerRenderBlock(BlocksList.LARCH_LOG_STR);
 		//herbs
 		registerRenderBlock(BlocksList.SEDGE);
 		registerRenderBlock(BlocksList.FERN);
 		registerRenderBlock(BlocksList.WIPE);
+		registerRenderBlock(BlocksList.MAGMATIC_SWAMP_DIRT);
+		registerRenderBlock(BlocksList.MAGMATIC_SWAMP_GRASS);
+		registerRenderBlock(BlocksList.SEDIMENTARY_SWAMP_DIRT);
+		registerRenderBlock(BlocksList.SEDIMENTARY_SWAMP_GRASS);
+		registerRenderBlock(BlocksList.METAMORPHIC_SWAMP_DIRT);
+		registerRenderBlock(BlocksList.METAMORPHIC_SWAMP_GRASS);
 
+		registerRenderBlock(BlocksList.BASE_GRANITE);
 		//ores
 		registerRenderBlock(BlocksList.MAGMATIC_COPPER);
 		registerRenderBlock(BlocksList.SEDIMENTARY_COPPER);
@@ -187,6 +243,16 @@ public class RegBlocks {
 		registerRenderBlock(BlocksList.REAL_BIRCH_SAPLING);
 		registerRenderBlock(BlocksList.REAL_POPLAR_SAPLING);
 
+		registerRenderBlock(BlocksList.ASH_FRUIT);
+		registerRenderBlock(BlocksList.BIRCH_FRUIT);
+		registerRenderBlock(BlocksList.LINDEN_FRUIT);
+		registerRenderBlock(BlocksList.SPRUCE_FRUIT);
+		registerRenderBlock(BlocksList.PEAR_FRUIT);
+		registerRenderBlock(BlocksList.PINE_FRUIT);
+		registerRenderBlock(BlocksList.POPLAR_FRUIT);
+		registerRenderBlock(BlocksList.OAK_FRUIT);
+		registerRenderBlock(BlocksList.LARCH_FRUIT);
+		
 		registerRenderBlock(BlocksList.REAL_ASH_BRANCH);
 		registerRenderBlock(BlocksList.REAL_BIRCH_BRANCH);
 		registerRenderBlock(BlocksList.REAL_LARCH_BRANCH);

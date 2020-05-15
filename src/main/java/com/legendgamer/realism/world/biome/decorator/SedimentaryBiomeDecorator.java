@@ -2,13 +2,21 @@ package com.legendgamer.realism.world.biome.decorator;
 
 import java.util.Random;
 
+import com.legendgamer.realism.blocks.tree.frame.BlockRealTrees;
+import com.legendgamer.realism.blocks.worldblock.SwampGrass;
 import com.legendgamer.realism.config.ConfigManager;
 import com.legendgamer.realism.reg.BlocksList;
+import com.legendgamer.realism.reg.RegBiomes;
 import com.legendgamer.realism.world.gen.feature.WorldGenRealismOre;
 import com.legendgamer.realism.world.gen.trees.foliate.GenAshTree;
 import com.legendgamer.realism.world.gen.trees.foliate.GenBirchTree;
+import com.legendgamer.realism.world.gen.trees.foliate.GenOakTree;
+import com.legendgamer.realism.world.gen.trees.foliate.GenPearTree;
+import com.legendgamer.realism.world.gen.trees.foliate.GenPoplarTree;
 
 import io.netty.util.internal.ThreadLocalRandom;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
@@ -17,13 +25,20 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class SedimentaryBiomeDecorator extends BiomeDecorator {
 
+	
+	public final IBlockState SWAMP_WATER = BlocksList.SWAMP_WATER.getDefaultState();
+	
 	public WorldGenerator fossils_gen,
 	copper_gen,
 	tin_gen,
 	iron_gen,
 	tungsten_gen;
 
-	public WorldGenerator gen_ash =	new GenBirchTree(); 
+	public WorldGenerator genTreeAsh = new GenAshTree();
+	public WorldGenerator genTreePear = new GenPearTree();
+	public WorldGenerator genTreePoplar = new GenPoplarTree();
+	public WorldGenerator genTreeBirch = new GenBirchTree();
+	public WorldGenerator genTreeOak = new GenOakTree();
 
 	int fossilssize = ThreadLocalRandom.current().nextInt(40,80);
 	int coppersize = ThreadLocalRandom.current().nextInt(30,45);
@@ -44,27 +59,90 @@ public class SedimentaryBiomeDecorator extends BiomeDecorator {
 		this.tin_gen = new WorldGenRealismOre(BlocksList.SEDIMENTARY_TIN.getDefaultState(), tinsize,BlocksList.SEDIMENTARY_STONE);
 		this.iron_gen = new WorldGenRealismOre(BlocksList.SEDIMENTARY_IRON.getDefaultState(), ironsize,BlocksList.SEDIMENTARY_STONE);
 		this.tungsten_gen = new WorldGenRealismOre(BlocksList.SEDIMENTARY_TUNGSTEN.getDefaultState(), tungstensize,BlocksList.SEDIMENTARY_STONE);
-
+		
 
 		this.genDecorations(biome, world, random);
-		this.generateTree(world, random, pos);
-	}
+		if(biome == RegBiomes.SEDIMENTARY_FOREST) {
+			this.generateTree(world, random, pos);	
+		}
 
+	}
+	public void decorateSwamp(World w, BlockPos p) {
+		ThreadLocalRandom rt = ThreadLocalRandom.current();
+		for (int i = 0; i < 4; ++i)
+		{
+			for (int j = 0; j < 4; ++j)
+			{
+				int l = j * 4 + 4;
+				int k = i * 4 + 4;
+				BlockPos blockpos = w.getHeight(p.add(k, 0, l));
+				if(w.getBlockState(blockpos).getBlock() instanceof SwampGrass && rt.nextInt(5) == 0) {
+					w.setBlockState(blockpos, SWAMP_WATER);
+				}
+			}
+		}
+	}
 	public void generateTree(World world, Random random, BlockPos p) {
 		ThreadLocalRandom rt = ThreadLocalRandom.current();
 		for (int i = 0; i < 4; ++i)
 		{
 			for (int j = 0; j < 4; ++j)
 			{
-				if(rt.nextInt(6) == 2) {
-				int k = i * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
-                int l = j * 4 + 2 + + rt.nextInt(6,8) + random.nextInt(3);
-                BlockPos blockpos = world.getHeight(p.add(k, 0, l));
-                gen_ash.generate(world, random, blockpos);
+				if(rt.nextInt(16) == 2) {
+					int k = i * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
+					int l = j * 4 + 2 + + rt.nextInt(6,8) + random.nextInt(3);
+					BlockPos blockpos = world.getHeight(p.add(k, 0, l));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(blockpos.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(blockpos.offset(f).offset(f)) instanceof BlockRealTrees)&& !(world.getBlockState(blockpos.offset(f).offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeAsh.generate(world, random, blockpos);
+						}
+					}
+				}
+				if(rt.nextInt(16) == 2) {
+					int k = i * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
+					int l = j * 4 + 2 + + rt.nextInt(6,8) + random.nextInt(3);
+					BlockPos blockpos = world.getHeight(p.add(k, 0, l));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(blockpos.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(blockpos.offset(f).offset(f)) instanceof BlockRealTrees)&& !(world.getBlockState(blockpos.offset(f).offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreePear.generate(world, random, blockpos);
+						}
+					}
+				}
+				if(rt.nextInt(16) == 2) {
+					int k = i * 4 + 2 + rt.nextInt(6,8) + random.nextInt(3);
+					int l = j * 4 + 2 + + rt.nextInt(6,8) + random.nextInt(3);
+					BlockPos blockpos = world.getHeight(p.add(k, 0, l));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(blockpos.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(blockpos.offset(f).offset(f)) instanceof BlockRealTrees)&& !(world.getBlockState(blockpos.offset(f).offset(f).offset(f)) instanceof BlockRealTrees)) {
+
+							genTreePoplar.generate(world, random, blockpos);
+						}
+					}
+				}
+				if(rt.nextInt(14) == 4) {
+					int l3 = j * 4  + random.nextInt(8) ;
+					int k3 = i* 4   + random.nextInt(8) ;
+					BlockPos blockpos3 = world.getHeight(p.add(k3, 0, l3));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(p.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(p.offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeOak.generate(world, random, blockpos3);
+
+						} 
+					}
+				}
+				if(rt.nextInt(16) == 4) {
+					int l = j * 4 + 4 + random.nextInt(8);
+					int k = i * 4 + 4  + random.nextInt(8) ;
+					BlockPos blockpos = world.getHeight(p.add(k, 0, l));
+					for(EnumFacing f : EnumFacing.HORIZONTALS) {
+						if(!(world.getBlockState(blockpos.offset(f)) instanceof BlockRealTrees) && !(world.getBlockState(blockpos.offset(f).offset(f)) instanceof BlockRealTrees)&& !(world.getBlockState(blockpos.offset(f).offset(f).offset(f)) instanceof BlockRealTrees)) {
+							genTreeBirch.generate(world, random, blockpos);
+						}
+					}
 				}
 			}
 		}
-		
+
 		//	new SpruceTreeGenerator(BlocksList.REAL_SPRUCE, BlocksList.REAL_SPRUCE_BRANCH, BlocksList.REAL_SPRUCE_LEAVES).generate(world, random, this.chunkPos);
 	}
 	@Override

@@ -6,7 +6,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 
-public class GenLayerBiomes extends GenLayer{
+public class GenLayerBiomes extends GenLayer {
 
 
 	private int metamorphic_plains = Biome.getIdForBiome(RegBiomes.METAMORPHIC_PLAINS);

@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "corner=xllc":  { "model": "realism:tree/thin_log/ash_log_lrc", "y": 90, "x": 90 },
+        "corner=xlrc":   { "model": "realism:tree/thin_log/ash_log_llc", "y": 90, "x": 90 },
+        "corner=xulc":  { "model": "realism:tree/thin_log/ash_log_urc", "y": 90, "x": 90 },
+        "corner=xurc":   { "model": "realism:tree/thin_log/ash_log_ulc", "y": 90, "x": 90 },
+	"corner=y": { "model": "realism:tree/thin_log/ash_log_y" },
+        "corner=zllc":  { "model": "realism:tree/thin_log/ash_log_llc", "x": 90 },
+        "corner=zlrc":   { "model": "realism:tree/thin_log/ash_log_lrc", "x": 90 },
+        "corner=zulc":   { "model": "realism:tree/thin_log/ash_log_urc", "x": 90 },
+        "corner=zurc": { "model": "realism:tree/thin_log/ash_log_ulc", "x": 90 }
+    }
+}

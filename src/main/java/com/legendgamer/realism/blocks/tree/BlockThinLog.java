@@ -42,37 +42,37 @@ public class BlockThinLog extends BasicMetadataBlock {
 		return false;
 	}
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
-		return false;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean isFullCube(IBlockState state) {
-		return false;
-	}
-
-    public boolean onBlockActivated(World w, BlockPos pos, IBlockState s, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)  {
-		if(s.getValue(CORNER) == EnumCorner.XLLC  ||s.getValue(CORNER) == EnumCorner.XLRC) {
-			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.BOTTOM).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.X));
-			return true;
-		} else  if(s.getValue(CORNER) == EnumCorner.XULC  ||s.getValue(CORNER) == EnumCorner.XURC) {
-			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.TOP).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.X));
-			return true;
-		} if(s.getValue(CORNER) == EnumCorner.ZLLC  ||s.getValue(CORNER) == EnumCorner.ZLRC) {
-			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.BOTTOM).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.Z));
-			return true;
-		} else  if(s.getValue(CORNER) == EnumCorner.ZULC  ||s.getValue(CORNER) == EnumCorner.ZURC) {
-			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.TOP).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.Z));
-			return true;
-		}
-		else {
-			w.setBlockState(pos.offset(facing), s);
-			return false;
-		}
-    }
+//	@Override
+//	@SideOnly(Side.CLIENT)
+//	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side) {
+//		return false;
+//	}
+//
+//	@Override
+//	@SideOnly(Side.CLIENT)
+//	public boolean isFullCube(IBlockState state) {
+//		return false;
+//	}
+//
+//    public boolean onBlockActivated(World w, BlockPos pos, IBlockState s, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)  {
+//		if(s.getValue(CORNER) == EnumCorner.XLLC  ||s.getValue(CORNER) == EnumCorner.XLRC) {
+//			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.BOTTOM).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.X));
+//			return true;
+//		} else  if(s.getValue(CORNER) == EnumCorner.XULC  ||s.getValue(CORNER) == EnumCorner.XURC) {
+//			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.TOP).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.X));
+//			return true;
+//		} if(s.getValue(CORNER) == EnumCorner.ZLLC  ||s.getValue(CORNER) == EnumCorner.ZLRC) {
+//			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.BOTTOM).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.Z));
+//			return true;
+//		} else  if(s.getValue(CORNER) == EnumCorner.ZULC  ||s.getValue(CORNER) == EnumCorner.ZURC) {
+//			w.setBlockState(pos, BlocksList.ASH_LOG_TD.getDefaultState().withProperty(BlockDoubleThinLog.HALF, BlockDoubleThinLog.EnumHalf.TOP).withProperty(BlockDoubleThinLog.AXIS, BlockDoubleThinLog.EnumAxis.Z));
+//			return true;
+//		}
+//		else {
+//			w.setBlockState(pos.offset(facing), s);
+//			return false;
+//		}
+//    }
     public boolean canPlaceBlockAt(World w, BlockPos pos) {
 		IBlockState s = w.getBlockState(pos);
 //		  if(s.getBlock() instanceof BlockThinLog) {

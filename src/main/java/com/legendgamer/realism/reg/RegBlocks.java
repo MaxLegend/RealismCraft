@@ -147,10 +147,12 @@ public class RegBlocks {
 		registerBlock(BlocksList.BASE_GRANITE);
 		
 		//double thin log
-		registerBlock(BlocksList.ASH_LOG_TD);
+//		registerBlock(BlocksList.ASH_LOG_TD);
 		
 		//thin log
-		registerBlock(BlocksList.ASH_LOG_T);
+		registerTechnicalBlock(BlocksList.ASH_LOG_TX);
+		registerTechnicalBlock(BlocksList.ASH_LOG_TZ);
+		registerTechnicalBlock(BlocksList.ASH_LOG_TY);
 		
 		//log
 		registerBlock(BlocksList.ASH_LOG);
@@ -176,10 +178,13 @@ public class RegBlocks {
 	public static void registerRender() {
 		
 		//double thin log
-		registerRenderBlock(BlocksList.ASH_LOG_TD);
+//		registerRenderBlock(BlocksList.ASH_LOG_TD);
 		
 		//thin log
-		registerRenderBlock(BlocksList.ASH_LOG_T);
+		//Technical block without item
+//		registerRenderBlock(BlocksList.ASH_LOG_TX);
+//		registerRenderBlock(BlocksList.ASH_LOG_TZ);
+//		registerRenderBlock(BlocksList.ASH_LOG_TY);
 		
 		//log
 		registerRenderBlock(BlocksList.ASH_LOG);
@@ -322,9 +327,9 @@ public class RegBlocks {
 	public static void registerBlock(Block block) {
 		ForgeRegistries.BLOCKS.register(block);
 		ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
-
-
-
+	}
+	public static void registerTechnicalBlock(Block block) {
+		ForgeRegistries.BLOCKS.register(block);
 	}
 	public static void registerBlockMeta(Block block, ItemBlock itemBlock) {
 		ForgeRegistries.BLOCKS.register(block);

@@ -1,8 +1,10 @@
 package com.legendgamer.realism.reg;
 
+import com.legendgamer.realism.API.metautils.BasicMetadataItem;
 import com.legendgamer.realism.Realism;
 import com.legendgamer.realism.API.BasicItem.BasicItem;
 
+import com.legendgamer.realism.items.ItemBeam;
 import net.minecraft.item.Item;
 
 public class ItemsList {
@@ -21,4 +23,6 @@ public class ItemsList {
 	public static final Item I_POPLAR_FRUIT = new BasicItem("fruits/i_poplar_fruit", 0, Realism.tabFruits);
 	public static final Item I_PEAR_FRUIT = new BasicItem("fruits/i_pear_fruit", 0, Realism.tabFruits);
 	public static final Item I_PEAR_G_FRUIT = new BasicItem("fruits/i_pear_g_fruit", 0, Realism.tabFruits);
+
+	public static final BasicMetadataItem ITEM_BEAM = new ItemBeam("item_beams", 4, Realism.tabTrees);
 }

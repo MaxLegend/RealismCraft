@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "corner=dlc":  { "model": "realism:tree/thin_log/ash_log_dlc" },
+    "corner=drc":   { "model": "realism:tree/thin_log/ash_log_drc" },
+    "corner=ulc":  { "model": "realism:tree/thin_log/ash_log_ulc" },
+    "corner=urc":   { "model": "realism:tree/thin_log/ash_log_urc" },
+    "corner=lc": { "model": "realism:tree/thin_log/ash_log_lc" },
+    "corner=rc":  { "model": "realism:tree/thin_log/ash_log_rc" },
+    "corner=uc":   { "model": "realism:tree/thin_log/ash_log_uc" },
+    "corner=dc":   { "model": "realism:tree/thin_log/ash_log_dc" },
+    "corner=tulc": { "model": "realism:tree/thin_log/ash_log_tulc" },
+    "corner=turc": { "model": "realism:tree/thin_log/ash_log_turc" },
+    "corner=tdlc": { "model": "realism:tree/thin_log/ash_log_tdlc" },
+    "corner=tdrc": { "model": "realism:tree/thin_log/ash_log_tdrc" },
+    "corner=full": { "model": "realism:tree/thin_log/ash_log_full" }
+  }
+}

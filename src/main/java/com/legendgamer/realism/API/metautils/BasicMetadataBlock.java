@@ -22,7 +22,6 @@ public abstract class BasicMetadataBlock extends BasicBlock {
         return new MetadataContainer(this, createBlockProperties());
     }
 
-
     protected abstract IProperty<?>[] createBlockProperties();
 
     protected abstract IBlockState createDefaultState();

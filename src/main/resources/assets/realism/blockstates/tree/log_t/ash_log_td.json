@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "axis=x,half=bottom":  { "model": "realism:tree/thin_log/double/ash_log_td_down", "y": 90 },
-        "axis=x,half=top":   { "model": "realism:tree/thin_log/double/ash_log_td_up", "y": 90},
-"axis=z,half=bottom":  { "model": "realism:tree/thin_log/double/ash_log_td_down" },
-        "axis=z,half=top":   { "model": "realism:tree/thin_log/double/ash_log_td_up"}
-    }
-}

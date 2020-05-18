@@ -4,7 +4,7 @@ import com.legendgamer.realism.API.metautils.BasicMetadataItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class RegItems {
@@ -33,8 +33,12 @@ public class RegItems {
     	registerItemRender(ItemsList.I_PINE_FRUIT);
     	registerItemRender(ItemsList.I_POPLAR_FRUIT);
     	registerItemRender(ItemsList.I_SPRUCE_FRUIT);
-    	registerMetaItemRender(ItemsList.ITEM_BEAM);
     }
+
+    public static void registerMetaRender() {
+    	registerMetaItemRender(ItemsList.ITEM_BEAM);
+	}
+
     private static void registerItem(Item item) {
         ForgeRegistries.ITEMS.register(item);
     }
@@ -42,7 +46,7 @@ public class RegItems {
     	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
     }
 	private static void registerMetaItemRender(BasicMetadataItem item, int meta) {
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(new ResourceLocation("test"), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(meta), "inventory"));
 	}
     private static void registerMetaItemRender(BasicMetadataItem item) {
 		int metaCount = item.getMetaCount();

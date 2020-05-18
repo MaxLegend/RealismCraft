@@ -17,7 +17,6 @@ public abstract class BasicMetadataItem<T extends Enum<T> & IItemEnum> extends B
     public BasicMetadataItem(String name, int maxStackSize, CreativeTabs tab) {
         super(name, maxStackSize, tab);
         setHasSubtypes(true);
-        setMaxDamage(0);
         clazz = setEnum();
         propertyValues = new ItemPropertyEnum<>("type", clazz, setAllowedValues());
     }

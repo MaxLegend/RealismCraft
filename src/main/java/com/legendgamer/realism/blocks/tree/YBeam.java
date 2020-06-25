@@ -1,7 +1,6 @@
 package com.legendgamer.realism.blocks.tree;
 
 import com.legendgamer.realism.API.BasicBlock.BasicBlock;
-import com.legendgamer.realism.blocks.tree.trunk.IBlockBeam;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,7 +12,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class YBeam extends BasicBlock implements IBlockBeam {
+public class YBeam extends BasicBlock {
 
     public static final AxisAlignedBB Y = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D);
 

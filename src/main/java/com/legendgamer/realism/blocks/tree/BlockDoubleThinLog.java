@@ -20,6 +20,7 @@ public class BlockDoubleThinLog extends BasicMetadataBlock {
 
 	public static final PropertyEnum<EnumAxis> AXIS = PropertyEnum.<EnumAxis>create("axis", EnumAxis.class);
 	public static final PropertyEnum<EnumHalf> HALF = PropertyEnum.<EnumHalf>create("half", EnumHalf.class);
+	
 
 	public BlockDoubleThinLog(Material materialIn, String name, float hardness, float resistanse, SoundType soundtype, CreativeTabs tab) {
 		super(materialIn, name, hardness, resistanse, soundtype, tab);
@@ -41,8 +42,10 @@ public class BlockDoubleThinLog extends BasicMetadataBlock {
 	}
 
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		if(hitY <= 0.5F) return getDefaultState().withProperty(HALF, EnumHalf.BOTTOM);
-		else if(hitY >= 0.5F) return getDefaultState().withProperty(HALF, EnumHalf.TOP);
+		if(hitY <= 0.5F) 
+			return getDefaultState().withProperty(HALF, EnumHalf.BOTTOM);
+		else if(hitY >= 0.5F) 
+			return getDefaultState().withProperty(HALF, EnumHalf.TOP);
 		return getDefaultState();
 	}
 
@@ -80,8 +83,12 @@ public class BlockDoubleThinLog extends BasicMetadataBlock {
 
 	public enum EnumHalf implements IStringSerializable {
 		TOP("top"),
-		BOTTOM("bottom");
-
+		BOTTOM("bottom"),
+		NORTH("north"),
+		SOUTH("south"),
+		EAST("east"),
+		WEST("west");
+		
 		private final String name;
 
 		EnumHalf(String name) {
@@ -96,4 +103,5 @@ public class BlockDoubleThinLog extends BasicMetadataBlock {
 			return this.name;
 		}
 	}
+	
 }

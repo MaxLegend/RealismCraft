@@ -25,4 +25,5 @@ public class ItemsList {
 	public static final Item I_PEAR_G_FRUIT = new BasicItem("fruits/i_pear_g_fruit", 0, Realism.tabFruits);
 
 	public static final BasicMetadataItem ITEM_BEAM = new ItemBeam("item_beam", 4, Realism.tabTrees);
+
 }

@@ -8,14 +8,14 @@ import net.minecraft.block.state.IBlockState;
 
 import java.util.stream.Collectors;
 
+//Metadata Builder by mousecray for RealismCraft
 public class MetadataContainer extends BlockStateContainer {
 
     private final ImmutableMap<IBlockState, Integer> stateToMeta;
 
     public MetadataContainer(Block blockIn, IProperty<?>... properties) {
         super(blockIn, properties);
-        stateToMeta = ImmutableMap.copyOf(getValidStates().stream()
-                .collect(Collectors.toMap(key -> key, value -> getValidStates().indexOf(value))));
+        stateToMeta = ImmutableMap.copyOf(getValidStates().stream().collect(Collectors.toMap(key -> key, value -> getValidStates().indexOf(value))));
     }
 
     public int getMetaFromState(IBlockState state) {

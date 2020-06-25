@@ -17,7 +17,11 @@ public class ItemPropertyEnum<T extends Enum<T> & IItemEnum> extends PropertyEnu
         valueMap = ImmutableMap.copyOf(tempMap);
     }
 
-    public String getValueFromMeta(int meta) {
+    public String getStringValueFromMeta(int meta) {
         return valueMap.get(meta).getName();
+    }
+
+    public T getValueFromMeta(int meta) {
+        return valueMap.get(meta);
     }
 }

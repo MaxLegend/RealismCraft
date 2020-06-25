@@ -17,7 +17,6 @@ public abstract class BasicMetadataItem<T extends Enum<T> & IItemEnum> extends B
     public BasicMetadataItem(String name, int maxStackSize, CreativeTabs tab) {
         super(name, maxStackSize, tab);
         setHasSubtypes(true);
-        setMaxDamage(0);
         clazz = setEnum();
         propertyValues = new ItemPropertyEnum<>("type", clazz, setAllowedValues());
     }
@@ -30,11 +29,15 @@ public abstract class BasicMetadataItem<T extends Enum<T> & IItemEnum> extends B
     @Override
     public String getUnlocalizedName(ItemStack stack) {
         int meta = stack.getMetadata();
-        return super.getUnlocalizedName(stack) + "." + propertyValues.getValueFromMeta(meta);
+        return super.getUnlocalizedName(stack) + "." + propertyValues.getStringValueFromMeta(meta);
     }
 
     public ResourceLocation getRegistryName(int meta) {
-        return new ResourceLocation(super.getRegistryName() + "." + propertyValues.getValueFromMeta(meta));
+        return new ResourceLocation(super.getRegistryName() + "." + propertyValues.getStringValueFromMeta(meta));
+    }
+
+    protected T getBeamType(ItemStack stack) {
+        return propertyValues.getValueFromMeta(stack.getMetadata());
     }
 
     @Override

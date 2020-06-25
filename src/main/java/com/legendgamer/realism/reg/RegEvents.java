@@ -5,7 +5,6 @@ import com.legendgamer.realism.event.client.DebugGameOverlayEvents;
 import com.legendgamer.realism.seasons.GradientTicker;
 import com.legendgamer.realism.seasons.SeasonEventerClient;
 import com.legendgamer.realism.seasons.SeasonEventerServer;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 

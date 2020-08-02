@@ -16,7 +16,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class YBeam extends BasicBlock {
+public class YBeam extends BasicBlock implements BeamMetadata {
 
     public static final AxisAlignedBB Y = new AxisAlignedBB(0.25D, 0.0D, 0.25D, 0.75D, 1.0D, 0.75D);
 
@@ -25,6 +25,11 @@ public class YBeam extends BasicBlock {
     public YBeam(int itemMetadata, Material materialIn, String name, float hardness, float resistanse, SoundType soundtype, CreativeTabs tab) {
         super(materialIn, name, hardness, resistanse, soundtype, tab);
         this.itemMetadata = itemMetadata;
+    }
+
+    @Override
+    public int getItemMetadata() {
+        return itemMetadata;
     }
 
     @Override

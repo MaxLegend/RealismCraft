@@ -1,0 +1,7 @@
+{
+    "parent": "realism:block/tree/thin_log/abs/log_tdrc",
+    "textures": {
+        "0": "realism:blocks/tree/oak/oak_top_2",
+        "1": "realism:blocks/tree/oak/oak_side"
+    }
+}

@@ -29,7 +29,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-public class XBeam extends BasicMetadataBlock {
+public class XBeam extends BasicMetadataBlock implements BeamMetadata {
 
     public static final AxisAlignedBB LEFT_DOWN_X = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.5D, 0.5D);
     public static final AxisAlignedBB RIGHT_DOWN_X = VectorUtils.AABBInvert(LEFT_DOWN_X, EnumFacing.Axis.Z);
@@ -49,6 +49,11 @@ public class XBeam extends BasicMetadataBlock {
     public XBeam(int itemMetadata, Material materialIn, String name, float hardness, float resistanse, SoundType soundtype, CreativeTabs tab) {
         super(materialIn, name, hardness, resistanse, soundtype, tab);
         this.itemMetadata = itemMetadata;
+    }
+
+    @Override
+    public int getItemMetadata() {
+        return itemMetadata;
     }
 
     @Override

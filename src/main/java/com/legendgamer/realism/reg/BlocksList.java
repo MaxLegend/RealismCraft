@@ -49,6 +49,13 @@ public class BlocksList {
     //thin log double
 //    public static final Block ASH_LOG_TD = new BlockDoubleThinLog(Material.GROUND, "tree/log_t/ash_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
 //    public static final Block BIRCH_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/birch_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block OAK_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/oak_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block LINDEN_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/linden_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block PEAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pear_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block POPLAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/poplar_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block PINE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pine_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block SPRUCE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/spruce_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block LARCH_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/larch_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
 
     public static final Block ASH_LOG_TX = new XBeam(0, Material.WOOD, "tree/log_t/ash_log_tx", 0, 0, SoundType.WOOD, null);
     public static final Block ASH_LOG_TZ = new ZBeam(0, Material.WOOD, "tree/log_t/ash_log_tz", 0, 0, SoundType.WOOD, null);
@@ -58,13 +65,34 @@ public class BlocksList {
     public static final Block BIRCH_LOG_TZ = new ZBeam(1, Material.WOOD, "tree/log_t/birch_log_tz", 0, 0, SoundType.WOOD, null);
     public static final Block BIRCH_LOG_TY = new YBeam(1, Material.WOOD, "tree/log_t/birch_log_ty", 0, 0, SoundType.WOOD, null);
 
-    public static final Block OAK_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/oak_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block SPRUCE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/spruce_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block PEAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pear_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block PINE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pine_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block POPLAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/poplar_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block LARCH_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/larch_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block LINDEN_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/linden_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block OAK_LOG_TX = new XBeam(2, Material.WOOD, "tree/log_t/oak_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block OAK_LOG_TZ = new ZBeam(2, Material.WOOD, "tree/log_t/oak_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block OAK_LOG_TY = new YBeam(2, Material.WOOD, "tree/log_t/oak_log_ty", 0, 0, SoundType.WOOD, null);
+
+    public static final Block LINDEN_LOG_TX = new XBeam(3, Material.WOOD, "tree/log_t/linden_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block LINDEN_LOG_TZ = new ZBeam(3, Material.WOOD, "tree/log_t/linden_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block LINDEN_LOG_TY = new YBeam(3, Material.WOOD, "tree/log_t/linden_log_ty", 0, 0, SoundType.WOOD, null);
+
+    public static final Block PEAR_LOG_TX = new XBeam(4, Material.WOOD, "tree/log_t/pear_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block PEAR_LOG_TZ = new ZBeam(4, Material.WOOD, "tree/log_t/pear_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block PEAR_LOG_TY = new YBeam(4, Material.WOOD, "tree/log_t/pear_log_ty", 0, 0, SoundType.WOOD, null);
+
+    public static final Block POPLAR_LOG_TX = new XBeam(5, Material.WOOD, "tree/log_t/poplar_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block POPLAR_LOG_TZ = new ZBeam(5, Material.WOOD, "tree/log_t/poplar_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block POPLAR_LOG_TY = new YBeam(5, Material.WOOD, "tree/log_t/poplar_log_ty", 0, 0, SoundType.WOOD, null);
+
+    public static final Block PINE_LOG_TX = new XBeam(6, Material.WOOD, "tree/log_t/pine_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block PINE_LOG_TZ = new ZBeam(6, Material.WOOD, "tree/log_t/pine_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block PINE_LOG_TY = new YBeam(6, Material.WOOD, "tree/log_t/pine_log_ty", 0, 0, SoundType.WOOD, null);
+
+    public static final Block SPRUCE_LOG_TX = new XBeam(7, Material.WOOD, "tree/log_t/spruce_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block SPRUCE_LOG_TZ = new ZBeam(7, Material.WOOD, "tree/log_t/spruce_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block SPRUCE_LOG_TY = new YBeam(7, Material.WOOD, "tree/log_t/spruce_log_ty", 0, 0, SoundType.WOOD, null);
+
+    public static final Block LARCH_LOG_TX = new XBeam(8, Material.WOOD, "tree/log_t/larch_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block LARCH_LOG_TZ = new ZBeam(8, Material.WOOD, "tree/log_t/larch_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block LARCH_LOG_TY = new YBeam(8, Material.WOOD, "tree/log_t/larch_log_ty", 0, 0, SoundType.WOOD, null);
+
     //И для ствола, и для толстых бревен - дроп в зависимости от стадии роста: 5-6 - падает бревно обычное, 0-1 палка, 2-3-4 тонкое бревно(в четверть толстого)
     //thin log(dropped from thick branch)
     public static final Block ASH_LOG_T = new BlockThinLog(Material.GROUND, "tree/log_t/ash_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);

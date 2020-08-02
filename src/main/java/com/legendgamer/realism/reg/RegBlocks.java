@@ -153,9 +153,38 @@ public class RegBlocks {
 		registerTechnicalBlock(BlocksList.ASH_LOG_TX);
 		registerTechnicalBlock(BlocksList.ASH_LOG_TZ);
 		registerTechnicalBlock(BlocksList.ASH_LOG_TY);
+
 		registerTechnicalBlock(BlocksList.BIRCH_LOG_TX);
 		registerTechnicalBlock(BlocksList.BIRCH_LOG_TZ);
 		registerTechnicalBlock(BlocksList.BIRCH_LOG_TY);
+
+		registerTechnicalBlock(BlocksList.OAK_LOG_TX);
+		registerTechnicalBlock(BlocksList.OAK_LOG_TZ);
+		registerTechnicalBlock(BlocksList.OAK_LOG_TY);
+
+		registerTechnicalBlock(BlocksList.LINDEN_LOG_TX);
+		registerTechnicalBlock(BlocksList.LINDEN_LOG_TZ);
+		registerTechnicalBlock(BlocksList.LINDEN_LOG_TY);
+
+		registerTechnicalBlock(BlocksList.PEAR_LOG_TX);
+		registerTechnicalBlock(BlocksList.PEAR_LOG_TZ);
+		registerTechnicalBlock(BlocksList.PEAR_LOG_TY);
+
+		registerTechnicalBlock(BlocksList.POPLAR_LOG_TX);
+		registerTechnicalBlock(BlocksList.POPLAR_LOG_TZ);
+		registerTechnicalBlock(BlocksList.POPLAR_LOG_TY);
+
+		registerTechnicalBlock(BlocksList.PINE_LOG_TX);
+		registerTechnicalBlock(BlocksList.PINE_LOG_TZ);
+		registerTechnicalBlock(BlocksList.PINE_LOG_TY);
+
+		registerTechnicalBlock(BlocksList.SPRUCE_LOG_TX);
+		registerTechnicalBlock(BlocksList.SPRUCE_LOG_TZ);
+		registerTechnicalBlock(BlocksList.SPRUCE_LOG_TY);
+
+		registerTechnicalBlock(BlocksList.LARCH_LOG_TX);
+		registerTechnicalBlock(BlocksList.LARCH_LOG_TZ);
+		registerTechnicalBlock(BlocksList.LARCH_LOG_TY);
 		
 		//log
 		registerBlock(BlocksList.ASH_LOG);
@@ -182,12 +211,6 @@ public class RegBlocks {
 		
 		//double thin log
 //		registerRenderBlock(BlocksList.ASH_LOG_TD);
-		
-		//thin log
-		//Technical block without item
-//		registerRenderBlock(BlocksList.ASH_LOG_TX);
-//		registerRenderBlock(BlocksList.ASH_LOG_TZ);
-//		registerRenderBlock(BlocksList.ASH_LOG_TY);
 		
 		//log
 		registerRenderBlock(BlocksList.ASH_LOG);
@@ -341,8 +364,4 @@ public class RegBlocks {
 	public static void registerRenderBlock(Block block) {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
 	}
-
-
-
-
 }

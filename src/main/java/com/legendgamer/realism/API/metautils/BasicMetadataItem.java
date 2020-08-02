@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.Nonnull;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -22,6 +23,7 @@ public abstract class BasicMetadataItem<T extends Enum<T> & IItemEnum> extends B
     }
 
     protected abstract Class<T> setEnum();
+
     protected Collection<T> setAllowedValues() {
         return Arrays.asList(clazz.getEnumConstants());
     }
@@ -36,7 +38,7 @@ public abstract class BasicMetadataItem<T extends Enum<T> & IItemEnum> extends B
         return new ResourceLocation(super.getRegistryName() + "." + propertyValues.getStringValueFromMeta(meta));
     }
 
-    protected T getBeamType(ItemStack stack) {
+    protected T getType(@Nonnull ItemStack stack) {
         return propertyValues.getValueFromMeta(stack.getMetadata());
     }
 

@@ -1,6 +1,7 @@
 package com.legendgamer.realism.event.client;
 
-import com.legendgamer.realism.blocks.tree.XZBeam;
+import com.legendgamer.realism.blocks.tree.XBeam;
+import com.legendgamer.realism.blocks.tree.ZBeam;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
@@ -23,17 +24,35 @@ public class RenderBoundingBox {
 
         if (event.getTarget().typeOfHit == RayTraceResult.Type.BLOCK) {
             IBlockState state = world.getBlockState(pos);
-            if (state.getBlock() instanceof XZBeam) {
-                switch (state.getValue(XZBeam.CORNER)) {
+            if (state.getBlock() instanceof XBeam) {
+                switch (state.getValue(XBeam.CORNER)) {
                     default:
                         break;
                     case TULC:
                     case TURC:
                     case TDLC:
                     case TDRC:
+                    case DRD:
+                    case DLD:
                         event.setCanceled(true);
                         for (AxisAlignedBB axisAlignedBB :
-                                ((XZBeam) state.getBlock()).getCollisionBoundingBoxList(state, world, pos))
+                                ((XBeam) state.getBlock()).getCollisionBoundingBoxList(state, world, pos))
+                            drawSelectionBox(event.getPlayer(), axisAlignedBB.offset(pos), event.getPartialTicks());
+                }
+            }
+            else if (state.getBlock() instanceof ZBeam) {
+                switch (state.getValue(ZBeam.CORNER)) {
+                    default:
+                        break;
+                    case TULC:
+                    case TURC:
+                    case TDLC:
+                    case TDRC:
+                    case DRD:
+                    case DLD:
+                        event.setCanceled(true);
+                        for (AxisAlignedBB axisAlignedBB :
+                                ((ZBeam) state.getBlock()).getCollisionBoundingBoxList(state, world, pos))
                             drawSelectionBox(event.getPlayer(), axisAlignedBB.offset(pos), event.getPartialTicks());
                 }
             }

@@ -153,6 +153,9 @@ public class RegBlocks {
 		registerTechnicalBlock(BlocksList.ASH_LOG_TX);
 		registerTechnicalBlock(BlocksList.ASH_LOG_TZ);
 		registerTechnicalBlock(BlocksList.ASH_LOG_TY);
+		registerTechnicalBlock(BlocksList.BIRCH_LOG_TX);
+		registerTechnicalBlock(BlocksList.BIRCH_LOG_TZ);
+		registerTechnicalBlock(BlocksList.BIRCH_LOG_TY);
 		
 		//log
 		registerBlock(BlocksList.ASH_LOG);

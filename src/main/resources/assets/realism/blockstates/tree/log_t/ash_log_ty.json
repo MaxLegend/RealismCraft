@@ -1,5 +1,5 @@
 {
-  "variants": {
-    "normal":  { "model": "realism:tree/thin_log/ash_log_ty" }
-  }
+    "variants": {
+        "normal": {"model": "realism:tree/thin_log/ash/ash_log_ty"}
+    }
 }

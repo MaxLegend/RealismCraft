@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "corner=dlc": {"model": "realism:tree/thin_log/birch/birch_log_dlc", "y": 180},
+        "corner=drc": {"model": "realism:tree/thin_log/birch/birch_log_drc", "y": 180},
+        "corner=ulc": {"model": "realism:tree/thin_log/birch/birch_log_ulc", "y": 180},
+        "corner=urc": {"model": "realism:tree/thin_log/birch/birch_log_urc", "y": 180},
+        "corner=lc": {"model": "realism:tree/thin_log/birch/birch_log_lc", "y": 180},
+        "corner=rc": {"model": "realism:tree/thin_log/birch/birch_log_rc", "y": 180},
+        "corner=uc": {"model": "realism:tree/thin_log/birch/birch_log_uc", "y": 180},
+        "corner=dc": {"model": "realism:tree/thin_log/birch/birch_log_dc", "y": 180},
+        "corner=dld": {"model": "realism:tree/thin_log/birch/birch_log_dld", "y": 180},
+        "corner=drd": {"model": "realism:tree/thin_log/birch/birch_log_drd", "y": 180},
+        "corner=tulc": {"model": "realism:tree/thin_log/birch/birch_log_tulc", "y": 180},
+        "corner=turc": {"model": "realism:tree/thin_log/birch/birch_log_turc", "y": 180},
+        "corner=tdlc": {"model": "realism:tree/thin_log/birch/birch_log_tdlc", "y": 180},
+        "corner=tdrc": {"model": "realism:tree/thin_log/birch/birch_log_tdrc", "y": 180},
+        "corner=full": {"model": "realism:tree/thin_log/birch/birch_log_full", "y": 180}
+    }
+}

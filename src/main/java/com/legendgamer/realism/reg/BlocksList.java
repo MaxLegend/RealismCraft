@@ -6,8 +6,10 @@ import com.legendgamer.realism.API.BasicBlock.BasicBlockWithInfo;
 import com.legendgamer.realism.Realism;
 import com.legendgamer.realism.blocks.grass.TallGrassAgeble;
 import com.legendgamer.realism.blocks.liquid.CustomWater;
-import com.legendgamer.realism.blocks.tree.XZBeam;
+import com.legendgamer.realism.blocks.tree.BlockThinLog;
+import com.legendgamer.realism.blocks.tree.XBeam;
 import com.legendgamer.realism.blocks.tree.YBeam;
+import com.legendgamer.realism.blocks.tree.ZBeam;
 import com.legendgamer.realism.blocks.tree.fruitleaves.*;
 import com.legendgamer.realism.blocks.tree.leaves.*;
 import com.legendgamer.realism.blocks.tree.sapling.*;
@@ -20,7 +22,6 @@ import com.legendgamer.realism.blocks.worldblock.SwampGrass;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.util.EnumFacing;
 
 public class BlocksList {
 
@@ -43,45 +44,38 @@ public class BlocksList {
     public static final Block SWAMP_WATER = new CustomWater(RegFluids.SWAMP_WATER, "water/swamp_water");
     public static final Block FRESH_WATER = new CustomWater(RegFluids.FRESH_WATER, "water/fresh_water");
 
-    public static final Block BASE_GRANITE = new BasicBlockWithInfo(Material.ROCK, "base_granite", 0, 0, SoundType.STONE, Realism.tabRocks,
-            "group.granite");
+    public static final Block BASE_GRANITE = new BasicBlockWithInfo(Material.ROCK, "base_granite", 0, 0, SoundType.STONE, Realism.tabRocks, "group.granite");
     //TODO creativeTabs == null
     //thin log double
-//		public static final Block ASH_LOG_TD = new BlockDoubleThinLog(Material.GROUND, "tree/log_t/ash_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block ASH_LOG_TX = new XZBeam(Material.WOOD, "tree/log_t/ash_log_tx", 0, 0, SoundType.WOOD, null, EnumFacing.Axis.X);
-    public static final Block ASH_LOG_TZ = new XZBeam(Material.WOOD, "tree/log_t/ash_log_tz", 0, 0, SoundType.WOOD, null, EnumFacing.Axis.Z);
-    public static final Block ASH_LOG_TY = new YBeam(Material.WOOD, "tree/log_t/ash_log_ty", 0, 0, SoundType.WOOD, null);
-    public static final Block BIRCH_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/birch_log_td", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
+//    public static final Block ASH_LOG_TD = new BlockDoubleThinLog(Material.GROUND, "tree/log_t/ash_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+//    public static final Block BIRCH_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/birch_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+
+    public static final Block ASH_LOG_TX = new XBeam(0, Material.WOOD, "tree/log_t/ash_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block ASH_LOG_TZ = new ZBeam(0, Material.WOOD, "tree/log_t/ash_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block ASH_LOG_TY = new YBeam(0, Material.WOOD, "tree/log_t/ash_log_ty", 0, 0, SoundType.WOOD, null);
+
+    public static final Block BIRCH_LOG_TX = new XBeam(1, Material.WOOD, "tree/log_t/birch_log_tx", 0, 0, SoundType.WOOD, null);
+    public static final Block BIRCH_LOG_TZ = new ZBeam(1, Material.WOOD, "tree/log_t/birch_log_tz", 0, 0, SoundType.WOOD, null);
+    public static final Block BIRCH_LOG_TY = new YBeam(1, Material.WOOD, "tree/log_t/birch_log_ty", 0, 0, SoundType.WOOD, null);
+
     public static final Block OAK_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/oak_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block SPRUCE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/spruce_log_td", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block PEAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pear_log_td", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block PINE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pine_log_td", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block POPLAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/poplar_log_td", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block LARCH_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/larch_log_td", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block LINDEN_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/linden_log_td", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
+    public static final Block SPRUCE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/spruce_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block PEAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pear_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block PINE_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pine_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block POPLAR_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/poplar_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block LARCH_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/larch_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block LINDEN_LOG_TD = new BasicBlockLogModel(Material.GROUND, "tree/log_t/linden_log_td", 0, 0, SoundType.GROUND, Realism.tabTrees);
     //И для ствола, и для толстых бревен - дроп в зависимости от стадии роста: 5-6 - падает бревно обычное, 0-1 палка, 2-3-4 тонкое бревно(в четверть толстого)
     //thin log(dropped from thick branch)
-//	public static final Block ASH_LOG_T = new BlockThinLog(Material.GROUND, "tree/log_t/ash_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block BIRCH_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/birch_log_t", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
+    public static final Block ASH_LOG_T = new BlockThinLog(Material.GROUND, "tree/log_t/ash_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block BIRCH_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/birch_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
     public static final Block OAK_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/oak_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block SPRUCE_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/spruce_log_t", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
+    public static final Block SPRUCE_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/spruce_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
     public static final Block PEAR_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pear_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
     public static final Block PINE_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/pine_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block POPLAR_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/poplar_log_t", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block LARCH_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/larch_log_t", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block LINDEN_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/linden_log_t", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
+    public static final Block POPLAR_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/poplar_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block LARCH_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/larch_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block LINDEN_LOG_T = new BasicBlockLogModel(Material.GROUND, "tree/log_t/linden_log_t", 0, 0, SoundType.GROUND, Realism.tabTrees);
     //log(dropped with trunk)(
     public static final Block ASH_LOG = new BasicBlockLogModel(Material.GROUND, "tree/log/ash_log", 0, 0, SoundType.GROUND, Realism.tabTrees);
     public static final Block BIRCH_LOG = new BasicBlockLogModel(Material.GROUND, "tree/log/birch_log", 0, 0, SoundType.GROUND, Realism.tabTrees);
@@ -94,150 +88,102 @@ public class BlocksList {
     public static final Block LINDEN_LOG = new BasicBlockLogModel(Material.GROUND, "tree/log/linden_log", 0, 0, SoundType.GROUND, Realism.tabTrees);
     //stripped log
     public static final Block ASH_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/ash_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block BIRCH_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/birch_log_str", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
+    public static final Block BIRCH_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/birch_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
     public static final Block OAK_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/oak_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
-    public static final Block SPRUCE_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/spruce_log_str", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block PEAR_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/pear_log_str", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block PINE_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/pine_log_str", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block POPLAR_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/poplar_log_str", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block LARCH_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/larch_log_str", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
-    public static final Block LINDEN_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/linden_log_str", 0, 0, SoundType.GROUND,
-            Realism.tabTrees);
+    public static final Block SPRUCE_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/spruce_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block PEAR_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/pear_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block PINE_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/pine_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block POPLAR_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/poplar_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block LARCH_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/larch_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
+    public static final Block LINDEN_LOG_STR = new BasicBlockLogModel(Material.GROUND, "tree/log/linden_log_str", 0, 0, SoundType.GROUND, Realism.tabTrees);
 
     public static final Block
 
             MAGMATIC_DIRT = new BlockDirt(Material.GROUND, "magmatic/magmatic_dirt", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.magmatic"),
-            MAGMATIC_GRASS = new GrassSided(Material.GRASS, "magmatic/magmatic_grass", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.magmatic",
-                    MAGMATIC_DIRT),
-            MAGMATIC_SWAMP_DIRT = new BlockDirt(Material.GROUND, "magmatic/magmatic_dirt_sw", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.magmatic"),
-            MAGMATIC_SWAMP_GRASS = new SwampGrass(Material.ROCK, "magmatic/magmatic_grass_sw", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.magmatic", MAGMATIC_SWAMP_DIRT),
+            MAGMATIC_GRASS = new GrassSided(Material.GRASS, "magmatic/magmatic_grass", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.magmatic", MAGMATIC_DIRT),
+            MAGMATIC_SWAMP_DIRT = new BlockDirt(Material.GROUND, "magmatic/magmatic_dirt_sw", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.magmatic"),
+            MAGMATIC_SWAMP_GRASS = new SwampGrass(Material.ROCK, "magmatic/magmatic_grass_sw", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.magmatic", MAGMATIC_SWAMP_DIRT),
 
     MAGMATIC_STONE = new BasicBlockWithInfo(Material.ROCK, "magmatic/magmatic_stone", 0, 0, SoundType.STONE, Realism.tabRocks, "group.magmatic"),
-            MAGMATIC_GRAVEL = new BasicBlockWithInfo(Material.ROCK, "magmatic/magmatic_gravel", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.magmatic"),
+            MAGMATIC_GRAVEL = new BasicBlockWithInfo(Material.ROCK, "magmatic/magmatic_gravel", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.magmatic"),
             MAGMATIC_SAND = new BasicBlockWithInfo(Material.ROCK, "magmatic/magmatic_sand", 0, 0, SoundType.SAND, Realism.tabRocks, "group.magmatic"),
 
     MAGMATIC_CLAY = new BasicBlockWithInfo(Material.ROCK, "magmatic/magmatic_clay", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.magmatic"),
-            MAGMATIC_CLAYSTONE = new BasicBlockWithInfo(Material.ROCK, "magmatic/magmatic_claystone", 0, 0, SoundType.STONE, Realism.tabRocks,
-                    "group.magmatic");
+            MAGMATIC_CLAYSTONE = new BasicBlockWithInfo(Material.ROCK, "magmatic/magmatic_claystone", 0, 0, SoundType.STONE, Realism.tabRocks, "group.magmatic");
 
 
     public static final Block
 
-            METAMORPHIC_DIRT = new BlockDirt(Material.GROUND, "metamorphic/metamorphic_dirt", 0, 0, SoundType.GROUND, Realism.tabRocks,
-            "group.metamoprhic"),
-            METAMORPHIC_GRASS = new GrassSided(Material.GRASS, "metamorphic/metamorphic_grass", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.metamoprhic", METAMORPHIC_DIRT),
-            METAMORPHIC_SWAMP_DIRT = new BlockDirt(Material.GROUND, "metamorphic/metamorphic_dirt_sw", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.metamoprhic"),
-            METAMORPHIC_SWAMP_GRASS = new SwampGrass(Material.GRASS, "metamorphic/metamorphic_grass_sw", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.metamoprhic", METAMORPHIC_SWAMP_DIRT),
+            METAMORPHIC_DIRT = new BlockDirt(Material.GROUND, "metamorphic/metamorphic_dirt", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.metamoprhic"),
+            METAMORPHIC_GRASS = new GrassSided(Material.GRASS, "metamorphic/metamorphic_grass", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.metamoprhic", METAMORPHIC_DIRT),
+            METAMORPHIC_SWAMP_DIRT = new BlockDirt(Material.GROUND, "metamorphic/metamorphic_dirt_sw", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.metamoprhic"),
+            METAMORPHIC_SWAMP_GRASS = new SwampGrass(Material.GRASS, "metamorphic/metamorphic_grass_sw", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.metamoprhic", METAMORPHIC_SWAMP_DIRT),
 
-    METAMORPHIC_STONE = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_stone", 0, 0, SoundType.STONE, Realism.tabRocks,
-            "group.metamoprhic"),
-            METAMORPHIC_GRAVEL = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_gravel", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.metamoprhic"),
-            METAMORPHIC_SAND = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_sand", 0, 0, SoundType.SAND, Realism.tabRocks,
-                    "group.metamoprhic"),
-            METAMORPHIC_CLAY = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_clay", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.metamoprhic"),
-            METAMORPHIC_CLAYSTONE = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_claystone", 0, 0, SoundType.STONE,
-                    Realism.tabRocks, "group.metamoprhic");
+    METAMORPHIC_STONE = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_stone", 0, 0, SoundType.STONE, Realism.tabRocks, "group.metamoprhic"),
+            METAMORPHIC_GRAVEL = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_gravel", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.metamoprhic"),
+            METAMORPHIC_SAND = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_sand", 0, 0, SoundType.SAND, Realism.tabRocks, "group.metamoprhic"),
+            METAMORPHIC_CLAY = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_clay", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.metamoprhic"),
+            METAMORPHIC_CLAYSTONE = new BasicBlockWithInfo(Material.ROCK, "metamorphic/metamorphic_claystone", 0, 0, SoundType.STONE, Realism.tabRocks, "group.metamoprhic");
 
     public static final Block
 
-            SEDIMENTARY_DIRT = new BlockDirt(Material.GROUND, "sedimentary/sedimentary_dirt", 0, 0, SoundType.GROUND, Realism.tabRocks,
-            "group.sedimentary"),
-            SEDIMENTARY_GRASS = new GrassSided(Material.GRASS, "sedimentary/sedimentary_grass", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.sedimentary", SEDIMENTARY_DIRT),
-            SEDIMENTARY_SWAMP_DIRT = new BlockDirt(Material.GROUND, "sedimentary/sedimentary_dirt_sw", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.sedimentary"),
-            SEDIMENTARY_SWAMP_GRASS = new SwampGrass(Material.GRASS, "sedimentary/sedimentary_grass_sw", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.sedimentary", SEDIMENTARY_SWAMP_DIRT),
+            SEDIMENTARY_DIRT = new BlockDirt(Material.GROUND, "sedimentary/sedimentary_dirt", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.sedimentary"),
+            SEDIMENTARY_GRASS = new GrassSided(Material.GRASS, "sedimentary/sedimentary_grass", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.sedimentary", SEDIMENTARY_DIRT),
+            SEDIMENTARY_SWAMP_DIRT = new BlockDirt(Material.GROUND, "sedimentary/sedimentary_dirt_sw", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.sedimentary"),
+            SEDIMENTARY_SWAMP_GRASS = new SwampGrass(Material.GRASS, "sedimentary/sedimentary_grass_sw", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.sedimentary", SEDIMENTARY_SWAMP_DIRT),
 
 
-    SEDIMENTARY_STONE = new BasicBlockWithInfo(Material.ROCK, "sedimentary/sedimentary_stone", 0, 0, SoundType.STONE, Realism.tabRocks,
-            "group.sedimentary"),
-            SEDIMENTARY_GRAVEL = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_gravel", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.sedimentary"),
-            SEDIMENTARY_SAND = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_sand", 0, 0, SoundType.SAND, Realism.tabRocks,
-                    "group.sedimentary"),
-            SEDIMENTARY_CLAY = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_clay", 0, 0, SoundType.GROUND, Realism.tabRocks,
-                    "group.sedimentary"),
-            SEDIMENTARY_CLAYSTONE = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_claystone", 0, 0, SoundType.STONE,
-                    Realism.tabRocks, "group.sedimentary");
+    SEDIMENTARY_STONE = new BasicBlockWithInfo(Material.ROCK, "sedimentary/sedimentary_stone", 0, 0, SoundType.STONE, Realism.tabRocks, "group.sedimentary"),
+            SEDIMENTARY_GRAVEL = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_gravel", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.sedimentary"),
+            SEDIMENTARY_SAND = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_sand", 0, 0, SoundType.SAND, Realism.tabRocks, "group.sedimentary"),
+            SEDIMENTARY_CLAY  = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_clay", 0, 0, SoundType.GROUND, Realism.tabRocks, "group.sedimentary"),
+            SEDIMENTARY_CLAYSTONE = new BasicBlockWithInfo(Material.GROUND, "sedimentary/sedimentary_claystone", 0, 0, SoundType.STONE, Realism.tabRocks, "group.sedimentary");
 
     //copper
     public static final Block
-            MAGMATIC_COPPER = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_copper", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.magmatic", "group.copper"),
-            SEDIMENTARY_COPPER = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_copper", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.sedimentary", "group.copper"),
-            METAMORPHIC_COPPER = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_copper", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.metamoprhic", "group.copper");
+            MAGMATIC_COPPER = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_copper", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic", "group.copper"),
+            SEDIMENTARY_COPPER = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_copper", 0, 0, SoundType.STONE, Realism.tabOres, "group.sedimentary", "group.copper"),
+            METAMORPHIC_COPPER = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_copper", 0, 0, SoundType.STONE, Realism.tabOres, "group.metamoprhic", "group.copper");
 
     //tin
     public static final Block
-            MAGMATIC_TIN = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_tin", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic",
-            "group.tin"),
-            SEDIMENTARY_TIN = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_tin", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.sedimentary", "group.tin"),
-            METAMORPHIC_TIN = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_tin", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.metamoprhic", "group.tin");
+            MAGMATIC_TIN = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_tin", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic", "group.tin"),
+            SEDIMENTARY_TIN = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_tin", 0, 0, SoundType.STONE, Realism.tabOres, "group.sedimentary", "group.tin"),
+            METAMORPHIC_TIN = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_tin", 0, 0, SoundType.STONE, Realism.tabOres, "group.metamoprhic", "group.tin");
 
     //coal
     public static final Block
-            SEDIMENTARY_COAL = new BasicBlockWithInfo(Material.ROCK, "sedimentary/sed_coal", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.sedimentary"),
+            SEDIMENTARY_COAL = new BasicBlockWithInfo(Material.ROCK, "sedimentary/sed_coal", 0, 0, SoundType.STONE, Realism.tabOres, "group.sedimentary"),
             MAGMATIC_COAL = new BasicBlockWithInfo(Material.ROCK, "magmatic/magm_coal", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic"),
-            METAMORPHIC_COAL = new BasicBlockWithInfo(Material.ROCK, "metamorphic/met_coal", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.metamoprhic");
+            METAMORPHIC_COAL = new BasicBlockWithInfo(Material.ROCK, "metamorphic/met_coal", 0, 0, SoundType.STONE, Realism.tabOres, "group.metamoprhic");
 
     //nickel
     public static final Block
-            MAGMATIC_NICKEL = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_nickel", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.magmatic", "group.nickel"),
-            METAMORPHIC_NICKEL = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_nickel", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.metamoprhic", "group.nickel");
+            MAGMATIC_NICKEL = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_nickel", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic", "group.nickel"),
+            METAMORPHIC_NICKEL = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_nickel", 0, 0, SoundType.STONE, Realism.tabOres, "group.metamoprhic", "group.nickel");
 
     //iron
     public static final Block
-            MAGMATIC_IRON = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_iron", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.magmatic", "group.iron"),
-            SEDIMENTARY_IRON = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_iron", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.sedimentary", "group.iron");
+            MAGMATIC_IRON = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_iron", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic", "group.iron"),
+            SEDIMENTARY_IRON = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_iron", 0, 0, SoundType.STONE, Realism.tabOres, "group.sedimentary", "group.iron");
 
     //chrome
     public static final Block
-            MAGMATIC_CHROME = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_chrome", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.magmatic", "group.chrome");
+            MAGMATIC_CHROME = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_chrome", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic", "group.chrome");
 
     //vanadium
     public static final Block
-            MAGMATIC_VANADIUM = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_vanadium", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.magmatic", "group.vanadium"),
-            METAMORPHIC_VANADIUM = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_vanadium", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.metamoprhic", "group.vanadium");
+            MAGMATIC_VANADIUM = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_vanadium", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic", "group.vanadium"),
+            METAMORPHIC_VANADIUM = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_vanadium", 0, 0, SoundType.STONE, Realism.tabOres, "group.metamoprhic", "group.vanadium");
 
     //tungsten
     public static final Block
-            SEDIMENTARY_TUNGSTEN = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_tungsten", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.sedimentary", "group.tungsten");
+            SEDIMENTARY_TUNGSTEN = new BasicBlockWithDoubleInfo(Material.ROCK, "sedimentary/sed_tungsten", 0, 0, SoundType.STONE, Realism.tabOres, "group.sedimentary", "group.tungsten");
 
     //titan
     public static final Block
-            MAGMATIC_TITAN = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_titan", 0, 0, SoundType.STONE, Realism.tabOres,
-            "group.magmatic", "group.titan"),
-            METAMORPHIC_TITAN = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_titan", 0, 0, SoundType.STONE, Realism.tabOres,
-                    "group.metamoprhic", "group.titan");
+            MAGMATIC_TITAN = new BasicBlockWithDoubleInfo(Material.ROCK, "magmatic/magm_titan", 0, 0, SoundType.STONE, Realism.tabOres, "group.magmatic", "group.titan"),
+            METAMORPHIC_TITAN = new BasicBlockWithDoubleInfo(Material.ROCK, "metamorphic/met_titan", 0, 0, SoundType.STONE, Realism.tabOres, "group.metamoprhic", "group.titan");
 
 
     //Тонкие ветки исключены из обращения до необходимости.
@@ -258,13 +204,13 @@ public class BlocksList {
      * Каждое дерево имеет: блок ствола, блок толстой ветки, блок тонкой ветки(возможно, в будущем), блок листвы, блок плода, блок сгнившего ствола(только 6 стадии, поваленные деревья), блок саженца(с итемом)
      * Соответсвенно каждый тип дерева имеет свое бревно(отдельный блок, дропающийся со ствола) свое тонкое бревно(отдельный блок, дропается с толстой ветки), которые можно объединить друг с другом в связку с
      * помощью высушенной лозы
-     * свою доску, доски(как блок), верстак, дверь, лестницу, ступеньки, забор, калитку, баррикаду, сундук + всякие предметы делающиеся из дерева, мысли о которых
+     *  свою доску, доски(как блок), верстак, дверь, лестницу, ступеньки, забор, калитку, баррикаду, сундук + всякие предметы делающиеся из дерева, мысли о которых
      * придут позднее.
      */
     public static final Block PINE_FRUIT = new PineFL(Material.PLANTS, "fruit_lv/pine_frt_lv", 0, 0, SoundType.PLANT, Realism.tabTrees);
     public static final Block REAL_PINE_LEAVES = new PineLeaves(Material.LEAVES, "tree/real_pine_lv", 0, 0, SoundType.WOOD, Realism.tabTrees);
     public static final Block REAL_TB_PINE = new PineTB(Material.WOOD, "tree/pine_thick_branch", 0, 0, SoundType.WOOD, Realism.tabTrees);
-    public static final Block REAL_PINE = new PineTrunk(Material.WOOD, "tree/real_pine", 0, 0, SoundType.WOOD, Realism.tabTrees);
+    public static final Block REAL_PINE = new PineTrunk(Material.WOOD, "tree/real_pine", 0, 0, SoundType.WOOD, Realism.tabTrees );
 
 
     public static final Block SPRUCE_FRUIT = new SpruceFL(Material.PLANTS, "fruit_lv/spruce_frt_lv", 0, 0, SoundType.PLANT, Realism.tabTrees);
@@ -279,7 +225,7 @@ public class BlocksList {
 
     public static final Block PEAR_FRUIT = new PearFL(Material.PLANTS, "fruit_lv/pear_frt_lv", 0, 0, SoundType.PLANT, Realism.tabTrees);
     public static final Block REAL_PEAR_LEAVES = new PearLeaves(Material.LEAVES, "tree/real_pear_lv", 0, 0, SoundType.WOOD, Realism.tabTrees);
-    public static final Block REAL_TB_PEAR = new PearTB(Material.WOOD, "tree/pear_thick_branch", 0, 0, SoundType.WOOD, Realism.tabTrees);
+    public static final Block REAL_TB_PEAR = new PearTB(Material.WOOD, "tree/pear_thick_branch", 0, 0, SoundType.WOOD, Realism.tabTrees );
     public static final Block REAL_PEAR = new PearTrunk(Material.WOOD, "tree/real_pear", 0, 0, SoundType.WOOD, Realism.tabTrees);
 
     public static final Block POPLAR_FRUIT = new PoplarFL(Material.PLANTS, "fruit_lv/poplar_frt_lv", 0, 0, SoundType.PLANT, Realism.tabTrees);
@@ -319,6 +265,9 @@ public class BlocksList {
     public static final Block REAL_BIRCH_SAPLING = new BirchSP(Material.WOOD, "tree/real_birch_sapling", Realism.tabTrees);
     public static final Block REAL_LARCH_SAPLING = new LarchSP(Material.WOOD, "tree/real_larch_sapling", Realism.tabTrees);
     public static final Block REAL_SPRUCE_SAPLING = new SpruceSP(Material.WOOD, "tree/real_spruce_sapling", Realism.tabTrees);
+
+
+
 
 
 }

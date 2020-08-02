@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "corner=dlc": {"model": "realism:tree/thin_log/linden/linden_log_dlc", "y": 90},
+        "corner=drc": {"model": "realism:tree/thin_log/linden/linden_log_drc", "y": 90},
+        "corner=ulc": {"model": "realism:tree/thin_log/linden/linden_log_ulc", "y": 90},
+        "corner=urc": {"model": "realism:tree/thin_log/linden/linden_log_urc", "y": 90},
+        "corner=lc": {"model": "realism:tree/thin_log/linden/linden_log_lc", "y": 90},
+        "corner=rc": {"model": "realism:tree/thin_log/linden/linden_log_rc", "y": 90},
+        "corner=uc": {"model": "realism:tree/thin_log/linden/linden_log_uc", "y": 90},
+        "corner=dc": {"model": "realism:tree/thin_log/linden/linden_log_dc", "y": 90},
+        "corner=dld": {"model": "realism:tree/thin_log/linden/linden_log_dld", "y": 90},
+        "corner=drd": {"model": "realism:tree/thin_log/linden/linden_log_drd", "y": 90},
+        "corner=tulc": {"model": "realism:tree/thin_log/linden/linden_log_tulc", "y": 90},
+        "corner=turc": {"model": "realism:tree/thin_log/linden/linden_log_turc", "y": 90},
+        "corner=tdlc": {"model": "realism:tree/thin_log/linden/linden_log_tdlc", "y": 90},
+        "corner=tdrc": {"model": "realism:tree/thin_log/linden/linden_log_tdrc", "y": 90},
+        "corner=full": {"model": "realism:tree/thin_log/linden/linden_log_full", "y": 90}
+    }
+}
